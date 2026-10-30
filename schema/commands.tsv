@@ -1,0 +1,349 @@
+name	section	required	since	signature	description
+CopyFile	General Program Actions	2		"""oldfilename"", ""newfilename"""	Use this action to copy a file from within a script.
+DeleteFile	General Program Actions	1		"""filename"""	Use this action to delete a file from within a script.
+ExitProgram	General Program Actions	0			Immediately exits the program with no prompts.
+LogAdd	General Program Actions	1		"""text"""	Use this action to add a personal message to the Message Log.
+LogAddDateTime	General Program Actions	4		"""label"", includedate, includetime, includemilliseconds"	Use this action to add the date and time to the message log
+LogClear	General Program Actions	0			Use this action to clear the Message Log.
+LogSave	General Program Actions	2		"""filename"", AppendFile"	"This action saves the contents of the Message Log to ""filename""."
+LogShow	General Program Actions	1		DoShow	This action will show or hide the Message Log.
+SetCurrentDirectory	General Program Actions	2		"""filedirectory"", CreateIfNotFound"	Use this action to set the current work directory.
+StopAuxFile	General Program Actions	0			Use this action to treat the remainder of the file after the command as a big comment.
+WriteTextToFile	General Program Actions	2		"""filename"", ""text"""	Use this action to write text to a file.
+CustomFieldDescriptionAppend	Data Interaction	5	2023-12	ObjectType, CustomType, FieldString, HeaderString, IncludeInDiff	This command behaves the same as calling CustomFieldDescriptionModify but the Location is assumed to be a negative number.
+CustomFieldDescriptionModify	Data Interaction	6	2023-12	"ObjectType, CustomType, Location, ""FieldString"", ""HeaderString"", IncludeInDiff"	Use this script command to edit the CustomFieldDescription entries for a particular ObjectType/CustomType/Location.
+CreateData	Data Interaction	3		objecttype, [fieldlist], [valuelist]	Use this action to create particular objects.
+Delete	Data Interaction	1		objecttype, filter	Use this delete objects of a particular type.
+DeleteDevice	Data Interaction	1		[ObjectIDString]	Use this action to delete a specific object.
+DeleteIncludingContents	Data Interaction	2		objecttype, filter	Use this to delete objects of a particular type and other objects that these contain.
+ExportAreaSupplyCurves	Data Interaction	3		"""filename"", ""User Defined String"", NumPoints"	Use this action to export Area Supply Curves to a CSV file.
+ImportData	Data Interaction	2		"""filename"", FileType, HeaderLine, CreateIfNotFound"	Use this action to import data in various file formats that are not native to Simulator.
+LoadAux	Data Interaction	1		"""filename"", CreateIfNotFound"	Use this action to load another auxiliary file from within a script.
+LoadAuxDirectory	Data Interaction	1		"""filedirectory"", ""filterstring"", CreateIfNotFound"	Use this action to load multiple auxiliary files from a specified directory.
+LoadCSV	Data Interaction	2		"""filename"", CreateIfNotFound"	Use this action to load a CSV file that is formatted the same as the data sent to Excel in the Send All to Excel option found within a case information display, or by choose Save As CSV.
+LoadData	Data Interaction	2		"""filename"", DataName, CreateIfNotFound"	Use this action to load a named Data Section from another auxiliary file.
+LoadScript	Data Interaction	3		"""filename"", ScriptName, CreateIfNotFound"	Use this action to load a named Script Section from another auxiliary file.
+SaveData	Data Interaction	5		"""filename"", filetype, objecttype, [fieldlist], [subdatalist], filter, [SortFieldList], Transpose, Append"	Use this action to save data in a custom defined format.
+SaveDataEPC	Data Interaction	2		"""filename"", objecttype, filter, GEFileType, SaveBuses, Append"	Use this action to save data in the GE EPC format.
+SaveDataUsingBuiltInAUXFormat	Data Interaction	3		"""filename"", filetype, [List_of_built_ins], ModelToUse"	Use this action to save data using built-in categories.
+SaveDataUsingExportFormat	Data Interaction	3		"""filename"", filetype, ""FormatName"", ModelToUse"	Use this action to save data in a user-defined format that has previously been defined.
+SaveDataWithExtra	Data Interaction	7		"""filename"", filetype, objecttype, [fieldlist], [subdatalist], filter, [SortFieldList], [Header_List], [Header_Value_List], Transpose, Append"	Use this action to save data in a custom defined format.
+SaveObjectFields	Data Interaction	3		"""filename"", objecttype, [fieldlist]"	Use this action to save a list of fields available for the specified objecttype to a CSV file.
+SelectAll	Data Interaction	1		objecttype, filter	Use this to set the Selected field of objects of a particular type to YES.
+SendtoExcel	Data Interaction	2		"objecttype, [fieldlist], filter, UseColumnHeaders, ""workbookname"", ""worksheetname"", [SortFieldList], [Header_List], [Header_Value_List], ClearExisting, RowShift, ColShift"	Use this action to mimic the behavior of the Send to Excel option found within a case information display.
+SetData	Data Interaction	3		objecttype, [fieldlist], [valuelist], filter	Use this action to set fields for particular objects.
+SetElseCreateData	Data Interaction	4	2026-09	objecttype, [fieldlist], [SetValueList], [DefaultValueList]	Because AUX scripts provide no process control to determine if a power flow case contains a particular object, this command provides a way to do that.
+UnSelectAll	Data Interaction	2		objecttype, filter	Same as SelectAll, but this action sets the Selected field of objects meeting the filter to NO.
+WriteLimitMonitoringSettings	Data Interaction	1		"""filename"""	Use this to save Limit Monitoring Settings to an auxiliary file.
+AppendCase	Case Actions	2		"""filename"", OpenFileType, [StarBus, EstimateVoltages]"	Use this action to append a case to the currently open case.
+CaseDescriptionClear	Case Actions	0			Use this action clear the case description of the presently open case.
+CaseDescriptionSet	Case Actions	2		"""text"", Append"	Use this action to set or append text to the case description.
+DeleteExternalSystem	Case Actions	0			This action will delete part of the power system.
+EnterMode	Case Actions	1		mode	This action will change the mode in which Simulator is operating.
+Equivalence	Case Actions	0			This action will equivalence a power system.
+LoadEMS	Case Actions	2		"""filename"", filetype"	Use this to open any EMS file.
+NewCase	Case Actions	0			This action clears out the existing case and open a new case from scratch.
+OpenCase	Case Actions	2		"""filename"", OpenFileType,[LoadTransactions,StarBus,HowToKeepDuplicates]"	"This action will open a case stored in ""filename"" of the type OpenFileType."
+Renumber3WXFormerStarBuses	Case Actions	1		"""filename"", Delimiter"	Use this action to renumber star buses based on user-specified values.
+RenumberAreas	Case Actions	1		NumCI	Renumber Areas using the new number for the Area located in the Custom Integer field of the area.
+RenumberBuses	Case Actions	1		NumCI	Renumber Buses using the new number for the bus located in the Custom Integer field of the bus.
+RenumberMSLineDummyBuses	Case Actions	1		"""filename"", Delimiter"	Use this action to renumber dummy buses or a multisection line based on user-specified values.
+RenumberSubs	Case Actions	1		NumCI	Renumber Substations using the new number for the substation located in the Custom Integer field of the substation.
+RenumberZones	Case Actions	1		NumCI	Renumber Zones using the new number for the Zone located in the Custom Integer field of the zone.
+RenumberCase	Case Actions	0	2023-12		RenumberCase renumbers the object in the case according to the swap list in memory.
+SaveCase	Case Actions	2		"""filename"", SaveFileType, [PostCTGAGC, UseAreaZone]"	"This action will save the case to ""filename"" in the format SaveFileType."
+SaveExternalSystem	Case Actions	3		"""Filename"", SaveFileType, WithTies"	"This action will save part of the power system to a ""filename""."
+SaveMergedFixedNumBusCase	Case Actions	2		"""filename"", SaveFileType"	This online help topic will explain FixedNumBus in more detail:
+Scale	Case Actions	3		scaletype, basedon, [parameters], scalemarker	Use this action to scale the load and generation in the system.
+AutoInsertTieLineTransactions	Modify Case Objects	0			Use this action todelete all existing MW transactions and set the unspecified MW interchange for each area to zero.
+BranchMVALimitReorder	Modify Case Objects	0		Filter, SetA, SetB, SetC, SetD, SetE, SetF, SetG, SetH, SetI, SetJ, SetK, SetL, SetM, SetN, SetO	This action will modify the MVA limits for a branch.
+CalculateRXBGFromLengthConfigCondType	Modify Case Objects	0		filter	Use this action to go through branches in the power system and recalculate the per unit R, X, G, and B values using the TransLineCalc tool.
+ChangeSystemMVABase	Modify Case Objects	1		NewBase	Use this action to change the system MVA base to the specified value and update all internal data structures to store values on the new base.
+ClearSmallIslands	Modify Case Objects	0			Use this action to identify the largest island and de-energize all other islands.
+CreateLineDeriveExisting	Modify Case Objects	5	2024-12	FromBus, ToBus, Circuit, NewLength, BranchID, ExistingLength, ZeroG	This command is used to scale the impedance values of a branch onto a new branch.
+DirectionsAutoInsert	Modify Case Objects	4		Source, Sink, DeleteExisting, UseAreaZoneFilters	Use this action to auto-insert directions to the case.
+DirectionsAutoInsertReference	Modify Case Objects	2		SourceType, ReferenceObject, DeleteExisting, SourceFilterName, OppositeDirection	Use this to auto-insert directions from multiple source objects to the same ReferenceObject.
+InitializeGenMvarLimits	Modify Case Objects	0			Use this action to initialize all generators in the case so that they are appropriately marked as being at Mvar limits or not.
+InjectionGroupsAutoInsert	Modify Case Objects	0			"Use this action to insert injection groups according to the options specified in the ""IG_AutoInsert_Options"" object."
+InjectionGroupCreate	Modify Case Objects	3		"""Name"", objecttype, InitialValue, filter, Append"	This action will create or modify an injection group with participation points of a single object type that meet a filter.
+InjectionGroupRemoveDuplicates	Modify Case Objects	0		PreferenceFilter	(PreferenceFilter added in August 17, 2023 patch of Simulator 22 and 23) This action will search through all injection groups in the case looking for injection groups with the same elements.
+InterfaceAddElementsFromContingency	Modify Case Objects	2	2024-02	InterfaceName, ContingencyName	This action will create or modify an interface by adding the elements from a contingency to an interface as contingent interface elements.
+InterfacesAutoInsert	Modify Case Objects	5		"Type, DeleteExisting, UseFilters, ""Prefix"", Limits"	Use this action to auto-insert interfaces.
+InterfaceCreate	Modify Case Objects	4		"""Name"", DeleteExisting, ObjectType, Filter"	This action will create or modify an interface with elements of a single object type that meet a filter.
+InterfaceFlatten	Modify Case Objects	1		"""InterfaceName"""	Interfaces can contain elements that are other interfaces.
+InterfaceFlattenFilter	Modify Case Objects	1	2024-02	Filter	"This functions the same as the InterfaceFlatten script command, except you apply a filter to the case to perform the ""flattening"" process on all Interface objects that meet the filter."
+InterfaceModifyIsolatedElements	Modify Case Objects	0		filter	In interfaces with many BRANCH OPEN actions it is possible for some of the open actions to disconnect portions of the system that contain other open actions and other devices.
+InterfaceRemoveDuplicates	Modify Case Objects	0		PreferenceFilter	(PreferenceFilter added in August 17, 2023 patch of Simulator 22 and 23) This action will search through all interfaces in the case looking for interfaces with the same elements.
+MergeBuses	Modify Case Objects	1		[element], Filter	Use this action to merge buses
+MergeLineTerminals	Modify Case Objects	1		Filter	Use this action to merge line terminals.
+MergeMSLineSections	Modify Case Objects	1		Filter	Use this action to eliminate multi-section line records.
+Move	Modify Case Objects	3		[elementA], [destination parameters], HowMuch, AbortOnError	Use this action to move a generator, load, transmission line, or switched shunt.
+ReassignIDs	Modify Case Objects	2		objecttype, field, filter, UseRight	Use this action to set the IDs of specified objects to the first two characters of a specified field.
+Remove3WXformerContainer	Modify Case Objects	0		filter	Use this action to delete the three-winding transformers matching the specified filter while leaving the internal two-winding transformers intact.
+RenameInjectionGroup	Modify Case Objects	2		"""OldName"", ""NewName"""	This action will change the name of an existing injection group.
+RotateBusAnglesInIsland	Modify Case Objects	2		[BUS KeyField], Value	All angles in the island to which the specified bus belongs will be rotated by the same shift such that the specified bus ends up with a bus angle specified by the Value parameter.
+SetGenPMaxFromReactiveCapabilityCurve	Modify Case Objects	0		filter	Use this action to change the Maximum MW output of generators that use a capability curve, equal to the second-to-last MW point in the capability curve if the last Max Mvar point on the capability curve is smaller than 0.001 Mvar.
+SetParticipationFactors	Modify Case Objects	3		Method, ConstantValue, Object	Use this action to modify the generator participation factors in the case
+SetScheduledVoltageForABus	Modify Case Objects	2		[bus identifier], voltage	Use this action to set the stored scheduled voltage, vsched, for a bus according to how this is defined in the EPC format.
+SetInterfaceLimitToMonitoredElementLimitSum	Modify Case Objects	1		filter	This sets the limits of the interface to the sum of the limits of all branches within the interface.
+SplitBus	Modify Case Objects	5		[element], NewBusNumber, InsertBusTieLine, LineOpen, BranchDeviceType	
+SuperAreaAddAreas	Modify Case Objects	2	2024-07	"""Name"", Filter"	Use this action to add areas to an existing Super Area.
+SuperAreaRemoveAreas	Modify Case Objects	2	2024-07	"""Name"", Filter"	Use this action to remove areas from a Super Area.
+TapTransmissionLine	Modify Case Objects	3		[element], PosAlongLine, NewBusNumber, ShuntModel, TreatAsMSLine, UpdateOnelines, NewBusName	Use this action to tap a transmission line by adding in a new bus and splitting the line in two.
+ClearPowerFlowSolutionAidValues	Power Flow	0			PowerWorld Simulator maintains several internal flags that keep track of which branches are closed or opened, as well as information to help estimate the generation change needed in a system after making changes to load or generation.
+ConditionVoltagePockets	Power Flow	3		VoltageThreshold, AngleThreshold, filter	The goal of this script command is to find pockets of buses that may have bad initial voltage estimates and to get a better voltage estimate of these buses based on assuming that the voltages on buses outside these pockets are good.
+DiffCaseClearBase	Power Flow	0			Call this action to clear the base case for the difference flows abilities of Simulator.
+DiffCaseKeyType	Power Flow	1		KeyType	Use this action to change the key type that should be used when comparing fields when using the difference flows abilities of Simulator.
+DiffCaseMode	Power Flow	1		diffmode	Call this action to change the mode for the difference flows abilities of Simulator.
+DiffCaseSetAsBase	Power Flow	0			Call this action to set the present case as the base case for the difference flows abilities of Simulator.
+DiffCaseShowPresentAndBase	Power Flow	1		How	"Call this action with the parameter of either YES or NO to toggle the difference flows options ""Show Present|Base in Difference and Change Mode""."
+DiffCaseRefresh	Power Flow	0			Call this action to refresh the linking between the base case and the present case.
+DiffCaseWriteCompleteModel	Power Flow	5		"""filename"", AppendFile, SaveAdded, SaveRemoved, SaveBoth, KeyFields, ""ExportFormat"", UseAreaZone, UseDataMaintainer, AssumeBaseMeet, IncludeClearPowerFlowSolutionAidValues, DeleteBranchesThatFlipBusOrder"	In Version 21 and earlier this script command was called DiffFlowWriteCompleteModel.
+DiffCaseWriteBothEPC	Power Flow	5		"""filename"", GEFileType, UseAreaZone, BaseAreaZoneMeetFilter, Append, ""ExportFormat"", UseDataMaintainer"	Call this action to save any elements in both the base and present cases as determined using the difference flows functionality.
+DiffCaseWriteNewEPC	Power Flow	6		"""filename"", GEFileType, UseAreaZone, BaseAreaZoneMeetFilter, Append, UseDataMaintainer"	Call this action to save any new elements determined using the difference flows functionality.
+DiffCaseWriteRemovedEPC	Power Flow	1		"""filename"", GEFileType, UseAreaZone, BaseAreaZoneMeetFilter, Append, UseDataMaintainer"	In Version 21 and earlier this script command was called DiffFlowWriteNewEPC.
+DoCTGAction	Power Flow	1		[contingency action]	Call this action to use the formats seen in the CTGElement subdata record for Contingency Data.
+EstimateVoltages	Power Flow	1		filter	This will estimate voltages and angles at the buses that meet the filter based on voltages and angles at surrounding buses (these are buses that do not meet the filter).
+GenForceLDC_RCC	Power Flow	0		filter	Use this action to force generators in the case onto line drop / reactive current compensation.
+InterfacesCalculatePostCTGMWFlows	Power Flow	0			"Call this action to update the ""Interface MW Flow"", ""Contingent MW Flow"" fields on all Contingent Interfaces defined in the case."
+ResetToFlatStart	Power Flow	4		FlatVoltagesAngles, ShuntsToMax, LTCsToMiddle, PSAnglesToMiddle	"Use this action to initialize the Power Flow Solution to a ""flat start."" The parameters are all optional and specify a conditional response depending on whether the solution is successfully found."
+SaveGenLimitStatusAction	Power Flow	1		"""filename"""	Use this action to save Mvar information about generators in a text file.
+SaveJacobian	Power Flow	4		"""JacFileName"", ""JIDFileName"", FileType, JacForm"	Use this action to save the Jacobian Matrix to a text file or a file formatted for use with Matlab
+SaveYbusInMatlabFormat	Power Flow	2		"""filename"", IncludeVoltages"	Use this action to save the YBus to a file formatted for use with Matlab
+SolvePowerFlow	Power Flow	0		"SolMethod, ""filename1"", ""filename2"", CreateIfNotFound1, CreateIfNotFound2"	Call this action to perform a single power flow solution.
+UpdateIslandsAndBusStatus	Power Flow	0			Changes to branch and generator status impact islands and whether or not buses are connected.
+ZeroOutMismatches	Power Flow	0		ObjectType	With this script command, bus shunts or loads are changed at each bus that has a mismatch greater than the MVA convergence tolerance so that the mismatch at that bus is forced to zero.
+DeleteState	Power Flow	0		WhichState, StateName	Apply this script command to delete a specified system state that is currently in memory.
+RestoreState	Power Flow	0		WhichState, StateName	Apply this script command to restore a specified system state that is currently in memory.
+StoreState	Power Flow	0		StateName	Apply this script command to store the current system state to memory.
+VoltageConditioning	Power Flow	0			Perform voltage conditioning based on the Voltage Conditioning tool options and case voltage targets.
+Animate	User Interface	1		DoAnimate	Use this action to animate all the open oneline diagrams.
+MessageBox	User Interface	1		"""text"""	Use this action to open a dialog box that will display the entered text.
+ObjectFieldsInputDialog	User Interface	2		"""ObjectIDString"", [fieldlist], ""DialogCaption"", ""DialogExplain"", [LabelCaptions], [TabBreaks], [TabCaptions], [RowBreaks], [RowCaptions], [ColBreaks], [ColCaptions]"	Use this action to open a dialog box displaying the list of specified fields for the specified object.
+OpenDataView	User Interface	1		"""ObjectIDString"", ""DataGridIDString"""	Use this action to open the Data View Dialog to a particular object using a particular set of customized string grid options.
+CloseOneline	Oneline Actions	1		"""OnelineName"""	Use this action to close an open oneline diagram without saving it.
+EditMultipleOnelineAction	Oneline Actions	3		"""Path"", LinkType, SaveFileType"	Use this action to convert all files with a PWD extension in a specified directory to a new format.
+EnumerateDDLOnelines	Oneline Actions	2	2024-02	"""InputDSET"", ""OutputList"""	Use this action to analyze an Areva/Alstom/GE DSET DDL file and write out a listing of all diagrams contained within the file.
+ExportBusView	Oneline Actions	5		"""filename"", ""bus key"", ImageType, Width, Height, [ExportOptions]"	Use this action to export an image of a bus view oneline diagram to a file.
+ExportOneline	Oneline Actions	3		"""filename"", ""OnelineName"", ImageType, ""view"", FullScreen, ShowFull, [ExportOptions]"	Use this action to export an image of the open oneline diagram to a file containing the specified image type.
+ExportOnelineAsShapeFile	Oneline Actions	5		"""filename"", ""OnelineName"", ""ShapeFileExportDescriptionName"", UseLonLat, PointLocation"	Use this action to save an open oneline diagram to a shapefile.
+ImportDDLAsTranslation	Oneline Actions	1		"""filename"""	This loads an ESET DDL and converts some definitions into translations within Simulator.
+LoadAXD	Oneline Actions	2		"""filename"", ""OnelineName"", CreateIfNotFound"	Use this action to apply a display auxiliary file to an open oneline diagram.
+OpenOneline	Oneline Actions	3		"""filename"", ""view"", FullScreen, ShowFull, LinkMethod, Left, Top, Width, Height"	Use this action to open a oneline diagram.
+RelinkAllOpenOnelines	Oneline Actions	0			Making modifications to the power flow case could cause objects on a oneline from becoming unlinked.
+SaveOneline	Oneline Actions	3		"""filename"", ""OnelineName"", SaveFileType"	Use this action to save an open oneline diagram to file
+OpenBusView	Oneline Actions	1		"""Bus key"", ForceNewWindow"	Opens the Bus View to a particular bus specified in the first parameter.
+OpenSubView	Oneline Actions	1		"""Substation key"", ForceNewWindow"	Opens the Substation View to a particular substation specified in the first parameter.
+CreateNewAreasFromIslands	Connections Tools	0			Use this action to create permanent areas that match the area Simulator creates temporarily while solving the power flow.
+DetermineBranchesThatCreateIslands	Connections Tools	4		"Filter, StoreBuses, ""filename"", SetSelectedOnLines, FileType"	Use this action to determine the branches whose outage results in island formation.
+DeterminePathDistance	Connections Tools	4		[start], BranchDistMeas, BranchFilter, BusField	Use this action to calculate a distance measure at each bus in the entire model.
+DetermineShortestPath	Connections Tools	5		[start], [end], BranchDistanceMeasure, BranchFilter, Filename	Use this action to calculate the shortest path between a starting group and an ending group.
+DoFacilityAnalysis	Connections Tools	2		"""Filename"", SetSelected"	Do Facility Analysis (Minimum Cut) is used to determine the branches that would isolate the Facility from the External region as specified in the Select Bus Dialog in the Simulator Tool dialog.
+FindRadialBusPaths	Connections Tools	0		IgnoreStatus, TreatParallelAsNotRadial, BusOrSuperBus	This online help topic will explain radial bus paths in more detail:
+SetBusFieldFromClosest	Connections Tools	5		variablename, BusFilterSetTo, BusFilterFromThese, BranchFilterTraverse, BranchDistMeas	(This command was added to the January 15, 2025 Patch of Version 23) Set buses field values equal to the closest bus's value.
+SetSelectedFromNetworkCut	Connections Tools	9		SetHow, [BusOnCutSide], BranchFilter, InterfaceFilter, DCLineFilter, Energized, NumTiers, InitializeSelected, [ObjectsToSelect], UseAreaZone, UsekV, MinkV, MaxkV, LowerMinkV, LowerMaxkV	Use this action to set the Selected field of specified object types if they are on the specified side of a network cut created by specified branches, interfaces, and/or dc lines.
+CalculateFlowSense	Sensitivity Calculations	2		[flow element], FlowType	This calculates the sensitivity of the MW, MVAR, or MVA flow of a line or interface to a real and reactive power injections at all buses in the system.
+CalculateLODF	Sensitivity Calculations	2		[BRANCH nearbusnum farbusnum ckt], LinearMethod, PostClosureLCDF	Use this action to calculate the Line Outage Distribution Factors (or the Line Closure Distribution Factors) for a particular branch.
+CalculateLODFAdvanced	Sensitivity Calculations	8		"IncludePhaseShifters, FileType, MaxColumns, MinLODF, NumberFormat, DecimalPoints, OnlyIncludingLinesIncreasing, ""FileName"", IncludeIslandingCTG"	Use this action to to mimic what is done on the Advanced LODF Calculation dialog in the GUI.
+CalculateLODFMatrix	Sensitivity Calculations	4		WhichOnes, filterProcess, filterMonitor, MonitorOnlyClosed, LinearMethod, filterMonitorInterface, PostClosureLCDF	Use this action to calculate the Line Outage Distribution Factors (or the Line Closure Distribution Factors) for a particular branch.
+CalculateLODFScreening	Sensitivity Calculations	15		filterProcess, filterMonitor, IncludePhaseShifters, IncludeOpenLines, UseLODFThreshold, LODFThreshold, UseOverloadThreshold, OverloadLow, OverloadHigh, DoSaveFile, FileLocation, CustomFieldHighLODF, CustomFieldHighLODFLine, CustomFieldHighOverload, CustomFieldHighOverloadLine, DoUseCTGName, CustomFieldOrigCTGName	Use this action to do the LODF Screening calculation.
+CalculateLossSense	Sensitivity Calculations	1		FunctionType,AreaSALossReference,IslandLossReference	This calculates the loss sensitivity at each bus for an injection of power at the bus.
+CalculatePTDF	Sensitivity Calculations	3		[transactor seller], [transactor buyer], LinearMethod	Use this action to calculate the PTDF values between a seller and a buyer.
+CalculatePTDFMultipleDirections	Sensitivity Calculations	3		StoreForBranches, StoreForInterfaces, LinearMethod	Use this action to calculate the PTDF values between all the directions specified in the case.
+CalculateShiftFactors	Sensitivity Calculations	3		[flow element], direction, [transactor], LinearMethod, SetOutOfServiceBuses, filter, AbortOnError, BranchDistMeas	In Version 21 and earlier this script command was called CalculateTLR.
+CalculateShiftFactorsMultipleElement	Sensitivity Calculations	5		TypeElement,WhichElement,direction,[transactor],LinearMethod	In Version 21 and earlier this script command was called CalculateTLRMultipleElement.
+CalculateTapSense	Sensitivity Calculations	0	2025-06	filter	Voltage to tap sensitivities are calculated as needed in the power flow, but the field is not always kept up to date.
+CalculateVoltSelfSense	Sensitivity Calculations	0		filter	This calculates the sensitivity of a particular bus' voltage to real and reactive power injections at the same
+CalculateVoltSense	Sensitivity Calculations	1		[BUS num]	This calculates the sensitivity of a particular buses voltage to real and reactive power injections at all buses
+CalculateVoltToTransferSense	Sensitivity Calculations	4		[transactor seller], [transactor buyer], TransferType, TurnOffAVR	This calculates the sensitivity of bus voltage to a real or reactive power transfer between a seller and a buyer.
+LineLoadingReplicatorCalculate	Sensitivity Calculations	6		[Flow Element], [Injection Group], AGCOnly, DesiredFlow, Implement, LinearMethod, UseLoadMinMax, MaxMultiplier, MinMultiplier	This command calculates an injection change list containing the injection changes needed to alter a line or interface flow to a desired value.
+LineLoadingReplicatorImplement	Sensitivity Calculations	0			This command takes no parameters.
+SetSensitivitiesAtOutOfServiceToClosest	Sensitivity Calculations	0		filter, BranchDistMeas	This will take the P Sensitivity and Q Sensitivity values calculated using the CalculateTLR, CalculateFlowSense, or CalculateVoltSense actions and then populate the respective values at out-of- service buses so that they are equal to the value at the closest in service bus.
+CTGApply	Contingency Analysis	1		"""ContingencyName"""	Call this action to apply the actions in a contingency without solving the power flow.
+CTGAutoInsert	Contingency Analysis	0			This action will auto insert contingencies for you case.
+CTGCalculateOTDF	Contingency Analysis	3		[transactor seller], [transactor buyer], LinearMethod	This action first performs the same action as done by the CalculatePTDF([transactor seller], [transactor buyer], LinearMethod) call.
+CTGClearAllResults	Contingency Analysis	0			This action will delete all contingency violations and any contingency comparison results.
+CTGCloneMany	Contingency Analysis	0		"filter, ""Prefix"", ""Suffix"", SetSelected"	This command creates copies of any contingencies returned by the filter.
+CTGCloneOne	Contingency Analysis	1		"""ctgname"", ""newctgname"", ""Prefix"", ""Suffix"", SetSelected"	This command creates a copy of a single existing contingency.
+CTGComboDeleteAllResults	Contingency Analysis	0			Deletes all results that are associated with contingency combination analysis.
+CTGComboSolveAll	Contingency Analysis	0		DoDistributed, ClearAllResults	Call this command to run contingency combination analysis for all primary and regular/secondary contingencies that are set to not be skipped.
+CTGCompareTwoListsofContingencyResults	Contingency Analysis	2		"PRESENT or ""ControllingFilename"",PRESENT or ""ComparisonFilename"""	This command compares two different contingency result lists.
+CTGConvertAllToDeviceCTG	Contingency Analysis	1		KeepOriginalIfEmpty	This command is intended for use with full topology models, where breakers and disconnects are defined in addition to generators, loads, transmission lines, and so on.
+CTGConvertToPrimaryCTG	Contingency Analysis	0	2024-04	"filter, KeepOriginal, ""Prefix"", ""Suffix"""	Converts regular/secondary contingencies to Primary contingencies that are used with CTG Combo Analysis.
+CTGCreateContingentInterfaces	Contingency Analysis	2		filter, maxOption	This command creates an interface based on contingency violations.
+CTGCreateExpandedBreakerCTGs	Contingency Analysis	0			"This will convert any ""Open with Breakers"" or ""Close with Breakers"" contingency actions into OPEN or CLOSE actions on explicit breakers."
+CTGCreateStuckBreakerCTGs	Contingency Analysis	9		"filter, AllowDuplicates, ""PrefixName"", IncludeCTGLabel, BranchFieldName, ""SuffixName"", ""PrefixComment"", BranchFieldComment, ""SuffixComment"""	This command creates new contingencies from contingencies that have explicit breaker outages defined.
+CTGDeleteWithIdenticalActions	Contingency Analysis	0			This action deletes contingencies that have identical actions.
+CTGJoinActiveCTGs	Contingency Analysis	4		"InsertSolvePowerFlow, DeleteExisting, JoinWithSelf, ""filename"""	This command creates new contingencies that are a join of the current contingency list and a list read in from an auxiliary file or the current list itself.
+CTGPrimaryAutoInsert	Contingency Analysis	0			This action will auto insert Primary Contingencies.
+CTGProcessRemedialActionsAndDependencies	Contingency Analysis	1		DoDelete, filter	Remedial Actions and any Model Conditions, Model Filters, Model Expressions, and Model Planes being used by the specified Remedial Actions will be deleted or have their Selected field set to YES.
+CTGProduceReport	Contingency Analysis	1		"""filename"""	Produces a text-based contingency analysis report using the settings defined in CTG_Options.
+CTGReadFilePSLF	Contingency Analysis	1		"""filename"""	Use this action to load a file in the PSLF OTG format and create contingencies.
+CTGReadFilePTI	Contingency Analysis	1		"""filename"""	Use this action to load a file in the PTI CON format and create contingencies.
+CTGRelinkUnlinkedElements	Contingency Analysis	0			This will attempt to relink unlinked elements in the contingency records.
+CTGRestoreReference	Contingency Analysis	0			Call this action to reset the system state to the reference state for contingency analysis.
+CTGSaveViolationMatrices	Contingency Analysis	6		"""filename"", filetype, UsePercentage, [ObjectTypesToReport], SaveContingency, SaveObjects, FieldListObjectType, [FieldList], IncludeUnsolvableCTGs"	This command will save contingency violations in a matrix format.
+CTGSetAsReference	Contingency Analysis	0			Call this action to set the present system state as the reference for contingency analysis.
+CTGSkipWithIdenticalActions	Contingency Analysis	0	2025-11		Contingencies that have identical actions will have their Skip field set to YES.
+CTGSolve	Contingency Analysis	1		"""ContingencyName"""	Call this action solve a particular contingency.
+CTGSolveAll	Contingency Analysis	0		DoDistributed, ClearAllResults	Call this action to solve all of the contingencies that are not marked to be skipped.
+CTGSort	Contingency Analysis	0		[SortFieldList]	This command sorts the contingencies stored in Simulator's internal data structure.
+CTGVerifyIteratedLinearActions	Contingency Analysis	1		"""filename"""	Creates a text file that contains validation information relevant for using the option to Iterate on Action Status when using an linear method with contingency analysis or running ATC.
+CTGWriteAllOptions	Contingency Analysis	1		"""filename"", KeyField, UseSelectedDataMaintainer, SaveDependencies, UseAreaZoneFilters"	Writes out all information related to contingency analysis as an auxiliary file using concise variable names and headers.
+CTGWriteAuxUsingOptions	Contingency Analysis	1	2023-08	"""filename"", Append"	Writes out information related to contingency analysis as an auxiliary file.
+CTGWriteFilePTI	Contingency Analysis	3		"""filename"", BusFormat, TruncateCTGLabels, ""filtername"", Append"	Write contingencies to file in the PTI CON format.
+CTGWriteResultsAndOptions	Contingency Analysis	2		"""filename"", [opt1, opt2, opt3, ..., opt22], KeyField, UseDATASection, UseConcise, UseObjectIDs, UseSelectedDataMaintainers, SaveDependencies, UseAreaZoneFilters"	Writes out all information related to contingency analysis as an auxiliary file.
+Fault	Fault Analysis	4		[Bus num], faulttype, R, X	Call this function to calculate the fault currents for a fault.
+FaultAutoInsert	Fault Analysis	0			Multiple fault definitions are inserted using the options in the CTG_AutoInsert_Options object that are relevant for fault analysis.
+FaultClear	Fault Analysis	0			Clears a single fault that has been calculated with the Fault script command.
+FaultMultiple	Fault Analysis	0		UseDummyBus	Runs fault analysis on a list of defined faults.
+LoadPTISEQData	Fault Analysis	2		"""filename"", version"	Loads sequence data in the PTI format.
+ATCCreateContingentInterfaces	ATC (Available Transfer Capability)	0		filter	This command creates an interface based Transfer Limiter results from an ATC run.
+ATCDeleteAllResults	ATC (Available Transfer Capability)	0			Deletes all ATC results including TransferLimiter, ATCExtraMonitor, and ATCFlowValue object types.
+ATCDeleteScenarioChangeIndexRange	ATC (Available Transfer Capability)	2		ScenarioChangeType, [IndexRange]	ATC scenarios are defined by RL (line rating and zone load), G (generator), and I (interface rating) changes.
+ATCDetermine	ATC (Available Transfer Capability)	2		[transactor seller], [transactor buyer], DoDistributed, DoMultipleScenarios	Use this action to calculate the Available Transfer Capability (ATC) between a seller and a buyer.
+ATCDetermineMultipleDirections	ATC (Available Transfer Capability)	0		DoDistributed, DoMultipleScenarios	Use this action to calculate the Available Transfer Capability (ATC) for all defined directions.
+ATCDetermineATCFor	ATC (Available Transfer Capability)	3		RL, G, I, ApplyTransfer	Call this action to determine the ATC for Scenario RL, G, I.
+ATCDetermineMultipleDirectionsATCFor	ATC (Available Transfer Capability)	3		RL, G, I	Call this action to determine the ATC for Scenario RL, G, I for all defined directions.
+ATCIncreaseTransferBy	ATC (Available Transfer Capability)	1		amount	Call this action to increase the transfer between the seller and buyer.
+ATCRestoreInitialState	ATC (Available Transfer Capability)	0			Call this action to restore the initial state for the ATC tool.
+ATCSetAsReference	ATC (Available Transfer Capability)	0			Call this action to set the present system state to the reference state for ATC analysis.
+ATCTakeMeToScenario	ATC (Available Transfer Capability)	3		RL, G, I	Call this action to set the present case according to the scenarios along the RL, G, and I axes.
+ATCWriteAllOptions	ATC (Available Transfer Capability)	3		"""filename"", AppendFile, KeyField"	Renamed to ATCDataWriteOptionsAndResults in December 9, 2021 patch of Simulator 22
+ATCDataWriteOptionsAndResults	ATC (Available Transfer Capability)	1		"""filename"", AppendFile, KeyField"	Writes out all information related to ATC analysis to an auxiliary file.
+ATCWriteResultsAndOptions	ATC (Available Transfer Capability)	1		"""filename"", AppendFile"	Writes out all information related to ATC analysis to an auxiliary file.
+ATCWriteScenarioLog	ATC (Available Transfer Capability)	1		"""filename"", AppendFile, filter"	Writes out detailed log information for ATC Multiple Scenarios to a text file.
+ATCWriteScenarioMinMax	ATC (Available Transfer Capability)	7		"""filename"", filetype, AppendFile, [fieldlist], Operation, OperationField, GroupScenario, [RLFilter], [GFilter], [IFilter], DirectionFilter, DoGroupDirection, filter, PreferIterativelyFound"	Writes out TransferLimiter results from multiple scenario ATC calculations.
+ATCWriteToExcel	ATC (Available Transfer Capability)	1		"""worksheetname"", [fieldlist]"	Sends ATC analysis results to an Excel spreadsheet.
+ATCWriteToText	ATC (Available Transfer Capability)	2		"""filename"", filetype, [fieldlist]"	This is used with Multiple Scenario ATC analysis.
+GICCalculate	GIC (Geomagnetically Induced Current)	3		MaxField, Direction, SolvePF	"Calculates the ""Single Snapshot"" using GICSolution Options"
+GICClear	GIC (Geomagnetically Induced Current)	0			Clear GIC values.
+GICLoad3DEfield	GIC (Geomagnetically Induced Current)	3		"FileType, ""FileName"", SetupOnLoad"	Loads GIC data including time varying fields.
+GICReadFilePSLF	GIC (Geomagnetically Induced Current)	1	2024-08	"""FileName"""	.
+GICReadFilePTI	GIC (Geomagnetically Induced Current)	1	2024-08	"""FileName"""	.
+GICSaveGMatrix	GIC (Geomagnetically Induced Current)	2	2024-11	"""GMatrixFileName"", ""GMatixIDFileName"""	Use this action to save the GMatrix used with the GIC calculations in a file formatted for use with Matlab
+GICSensitivitiesCalculate	GIC (Geomagnetically Induced Current)	4	2026-03	SensitivityType,FieldDirectionOption,FieldDirectionDeg,[BranchesToInclude]	.
+GICSetupTimeVaryingSeries	GIC (Geomagnetically Induced Current)	3	2024-04	Start, End, Delta	.
+GICShiftOrStretchInputPoints	GIC (Geomagnetically Induced Current)	5		LatShift, LonShift, MagScalar, StretchScalar, UpdateTimeVaryingSeries	Scales, shifts, or stretches the active set of Time Varying Electric Field Inputs.
+GICTimeVaryingCalculate	GIC (Geomagnetically Induced Current)	2		TheTime,SolvePF	"Calculate GIC Values using the ""Time-Varying Series Voltage Inputs"" Calculation Mode."
+GICTimeVaryingAddTime	GIC (Geomagnetically Induced Current)	1		NewTime	Adds a new input values at specified time
+GICTimeVaryingDeleteAllTimes	GIC (Geomagnetically Induced Current)	0			Delete All Input time varying voltage input values
+GICTimeVaryingEFieldCalculate	GIC (Geomagnetically Induced Current)	2		TheTime,SolvePF	"Calculate GIC Values using the ""Time-Varying Electric Field Inputs"" Calculation Mode."
+GICTimeVaryingElectricFieldsDeleteAllTimes	GIC (Geomagnetically Induced Current)	0			Clear all the time varying electric field input values.
+GICWriteFilePSLF	GIC (Geomagnetically Induced Current)	2	2024-08	"""FileName"", UseFilters"	.
+GICWriteFilePTI	GIC (Geomagnetically Induced Current)	3	2024-08	"""FileName"", UseFilters, Version"	.
+GICWriteOptions	GIC (Geomagnetically Induced Current)	2		"""FileName"", KeyField"	"Calculates the ""Single Snapshot"" using GICSolution Options"
+CloseWithBreakers	ITP (Integrated Topology Processing)	1		objecttype, filter or [object identifier], OnlyEnergizeSpecifiedObjects, [SwitchingDeviceTypes], CloseNormallyClosedDisconnects	This action is used to specify which objects are to be energized by closing breakers and to actually close those breakers.
+ExpandAllBusTopology	ITP (Integrated Topology Processing)	0			This action is used to expand the topology around all buses in the case according to a topology type that is specified with a custom string field (currently Custom String 5) for the bus.
+ExpandBusTopology	ITP (Integrated Topology Processing)	2		BusIdentifier, TopologyType	This action is used to expand the topology around the specified bus according to the specified topology type.
+OpenWithBreakers	ITP (Integrated Topology Processing)	1		objecttype, filter or [object identifier], [SwitchingDeviceTypes], OpenNormallyOpenDisconnects	This action is used to specify which objects are to be disconnected by opening breakers and to actually open those breakers.
+SaveConsolidatedCase	ITP (Integrated Topology Processing)	1		"""filename"", filetype, [BusFormat, TruncateCtgLabels, AddCommentsForObjectLabels]"	This action saves the full topology model into a consolidated case.
+SolvePrimalLP	OPF (Optimal Power Flow) and SCOPF	2		"""filename1"", ""filename2"", CreateIfNotFound1, CreateIfNotFound2"	Call this action to perform a primal LP OPF solution.
+InitializePrimalLP	OPF (Optimal Power Flow) and SCOPF	2		"""filename1"", ""filename2"", CreateIfNotFound1, CreateIfNotFound2"	This commands clears all the structures and results of previous primal LP OPF solutions.
+SolveSinglePrimalLPOuterLoop	OPF (Optimal Power Flow) and SCOPF	4		"""filename1"", ""filename2"", CreateIfNotFound1, CreateIfNotFound2"	This action is basically identical to the SolvePrimalLP action, except that this will only perform a single optimization.
+SolveFullSCOPF	OPF (Optimal Power Flow) and SCOPF	3		"BCMethod, ""filename1"", ""filename2"", CreateIfNotFound1, CreateIfNotFound2"	Call this action to perform a full Security Constrained OPF solution.
+OPFWriteResultsAndOptions	OPF (Optimal Power Flow) and SCOPF	1		"""filename"""	Writes out all information related to OPF analysis as an auxiliary file.
+PVClear	PV Analysis	0			Call the function to clear all the results of the PV study.
+PVDataWriteOptionsAndResults	PV Analysis	1		"""filename"", AppendFile, KeyField"	Writes out all information related to PV analysis to an auxiliary file.
+PVDestroy	PV Analysis	0			Call the function to destroy the PV study.
+PVQVTrackSingleBusPerSuperBus	PV Analysis	0			If the topology processing add-on is installed, then this script command can be used to reduce the number of monitored buses.
+PVRun	PV Analysis	0		[elementSource], [elementSink]	Call this function start the PV study and optionally specify the source and sink elements.
+PVSetSourceAndSink	PV Analysis	2		[elementSource], [elementSink]	Call the function to specify the source and sink elements to perform the PV study.
+PVStartOver	PV Analysis	0			Call the function to start over the PV study.
+PVWriteInadequateVoltages	PV Analysis	1		"""filename"", AppendFile, InadequateType"	Call this action to save PV Inadequate Voltages in a CSV file.
+PVWriteResultsAndOptions	PV Analysis	1		"""filename"", AppendFile"	Writes out all information related to PV analysis to an auxiliary file.
+RefineModel	PV Analysis	4		objecttype, filter, Action, Tolerance	Call this function to refine the system model to fix modeling idiosyncrasies that cause premature loss of convergence during PV and QV studies.
+QVDataWriteOptionsAndResults	QV Analysis	1		"""filename"", AppendFile, KeyField"	Writes out all information related to QV analysis to an auxiliary file.
+QVDeleteAllResults	QV Analysis	0	2023-10		version 23 Deletes all QV results including QVCurve and PWQVResultListContainer object types.
+QVRun	QV Analysis	0		"""filename"", InErrorMakeBaseSolvable, DoDistributed"	Call the function to start a QV study for the list of buses whose QVSELECTED field is set to YES.
+QVSelectSingleBusPerSuperBus	QV Analysis	0			If the QV tool is being used on a full topology model, this action can be used to modify the monitored buses.
+QVWriteCurves	QV Analysis	4		"""filename"", IncludeQuantitiesToTrack, filter, Append"	This will save a comma-separated text file with the QV curve points.
+QVWriteResultsAndOptions	QV Analysis	1		"""filename"", AppendFile"	Writes out all information related to QV analysis to an auxiliary file.
+RegionLoadShapefile	Regions	4	2025-08	"""FileName"", ""Class Name"", [AttributeNames], AddToOpenOnelines, ""DisplayStyleName"", DeleteExistingShapes"	This action loads the shapes from a shapefile with options to add the shapes to any open valid onelines and to delete existing shapes.
+RegionRename	Regions	2	2025-04	"""OldName"",""NewName"", UpdateOnelines"	This action will change the name of an existing region.
+RegionRenameClass	Regions	2	2025-04	"""OldClassName"",""NewClassName"", UpdateOnelines, filter"	This action will change the class name of all the regions with the OldClassName names.
+RegionRenameProper1	Regions	2	2025-04	"""OldProper1Name"",""NewProper1Name"", UpdateOnelines, filter"	This action will change the proper1 name of all the regions with the OldProper1Name names.
+RegionRenameProper2	Regions	2	2025-04	"""OldProper2Name"",""NewProper2Name"", UpdateOnelines, filter"	This action will change the proper2 name of all the regions with the OldProper2Name name.
+RegionRenameProper3	Regions	2	2025-05	"""OldProper3Name"",""NewProper3Name"", UpdateOnelines, filter"	This action will change the proper3 name of all the regions with the OldProper3Name name.
+RegionRenameProper12Flip	Regions	0	2025-04	UpdateOnelines, filter	This command flips the proper1 and proper2 names for either all regions if the filter is empty, or for the regions that meet the filter.
+RegionUpdateBuses	Regions	0	2025-04		Updates the buses in all the regions.
+TSAutoCorrect	TS (Transient Stability)	0			Runs the auto correction of parameters for a transient stability run.
+TSAutoInsertDistRelay	TS (Transient Stability)	6		Reach, AddRelayAtFromBus, AddRelayAtToBus, DoTransferTrip, Shape, filter	Inserts DistRelay models on the lines meeting the specified filter.
+TSAutoInsertZPOTT	TS (Transient Stability)	2		Reach, filter,	Inserts ZPOTT models on the lines meeting the specified filter.
+TSAutoSavePlots	TS (Transient Stability)	2	2024-11	[PlotNames], [ContingencyNames], ImageFileType, ImageWidth, ImageHeight, ImageFontScalar, IncludeCaseName, IncludeCategory	Create and save images of the plots in the same manner as the AutoSave an image in the transient stability dialog works.
+TSCalculateCriticalClearTime	TS (Transient Stability)	1		[branch] or filter,	Use this action to calculate critical clearing time for faults on the lines that meet the specified filter.
+TSCalculateSMIBEigenValues	TS (Transient Stability)	0			Calculate single machine infinite bus eigenvalues.
+TSClearAllModels	TS (Transient Stability)	0			Clears all transient stability models.
+TSClearModelsforObjects	TS (Transient Stability)	1	2025-10	ObjectType, Filter	This action deletes all transient stability models associated with the objects that meet the filter.
+TSClearResultsFromRAM	TS (Transient Stability)	1		"ALL/SELECTED/""ContingencyName"", ClearSummary, ClearEvents, ClearStatistics, ClearTimeValues, ClearSolutionDetails"	Clears results from RAM of one or more specified Transient Contingencies.
+TSDisableMachineModelNonZeroDerivative	TS (Transient Stability)	0		DerivativeThreshold	The transient stability solution is initialized and state derivatives are calculated.
+TSGetVCurveData	TS (Transient Stability)	2		"""FileName"", filter"	For a synchronous generator a curve of points for field current and field voltage is created from a fixed terminal voltage and MW (P) power output and varying Mvar (Q) output.
+TSGetResults	TS (Transient Stability)	6		"""FileName"", SINGLE/SEPARATE/JSIS, [Contingencies], [Plots, ObjectFields], StartTime, EndTime]"	Use this to save out results for specific variables from plots, subplots, and object/field pairs after a transient stability simulation has been run.
+TSInitialize	TS (Transient Stability)	0		CheckInitialized	Initialize the transient stability solution.
+TSJoinActiveCTGs	TS (Transient Stability)	4	2024-03	"TimeDelay,DeleteExisting,JoinWithSelf,""fileName"",FirstCtg"	This command joins two lists of TSContingency objects with a specified time delay in seconds.
+TSLoadBPA	TS (Transient Stability)	1		"""FileName"""	Loads transient stability data stored in the BPA format.
+TSLoadGE	TS (Transient Stability)	2		"""FileName"", GENCCYN, EnableOutOfOrderModels"	Loads transient stability data stored in the GE DYD format.
+TSLoadPTI	TS (Transient Stability)	1		"""FileName"", ""MCREfilename"", ""MTRLOfilename"", ""GNETfilename"", ""BASEGENfilename"", ""MODREMOVEfilename"	Loads transient stability data in the PTI format.
+TSLoadRDB	TS (Transient Stability)	2		"""filename"", ModelType, filter"	Loads a SEL RDB file.
+TSLoadRelayCSV	TS (Transient Stability)	2		"""filename"", ModelType, filter"	This is a quicker alternative to using the TSLoadRDB command for loading RDB files.
+TSPlotSeriesAdd	TS (Transient Stability)	5	2024-02	"""PlotName"", SubPlotNum, AxisGroupNum, ObjectType, FieldType, ""Filter"", ""Attributes"""	This command adds one or multiple plot series to a new or existing plot definition
+TSResultStorageSetAll	TS (Transient Stability)	2		objecttype, YES/NO	This command will allow setting which object types are stored in memory during a transient stability run.
+TSRunResultAnalyzer	TS (Transient Stability)	0		"""ContingencyName"""	Run the Transient Result Analyzer for the specified contingency or all contingencies.
+TSRunUntilSpecifiedTime	TS (Transient Stability)	1		"""ContingencyName"", [StopTime, StepSize, StepsInCycles, ResetStartTime, NumberOfTimeStepsToDo]"	This command allows manual control of the transient stability run.
+TSSaveBPA	TS (Transient Stability)	1		"""FileName"", DiffCaseModifiedOnly"	Save transient stability data stored in the BPA IPF format.
+TSSaveGE	TS (Transient Stability)	1		"""FileName"", DiffCaseModifiedOnly"	Save transient stability data stored in the GE DYD format.
+TSSavePTI	TS (Transient Stability)	1		"""FileName"", DiffCaseModifiedOnly"	Save transient stability data stored in the PTI DYR format.
+TSSaveTwoBusEquivalent	TS (Transient Stability)	2		"""FileName"", [BUS]"	Save the two bus equivalent model of a specified bus to a PWB file.
+TSSolve	TS (Transient Stability)	1		"""ContingencyName"", [StartTime, StopTime, StepSize, StepInCycles]"	Solves only the specified contingency.
+TSSolveAll	TS (Transient Stability)	0		DoDistributed	Solves all defined transient contingencies that are not set to skip.
+TSSolveContinue	TS (Transient Stability)	0	2025-12		Continues the solution of the currently active contingency that has either been saved as a SnapShot or set using a Restore Time Point.
+TSTransferStateToPowerFlow	TS (Transient Stability)	0		CalculateMismatch	Transfer the transient stability state to the power flow.
+TSValidate	TS (Transient Stability)	0			Validate transient stability models and input values.
+TSWriteModels	TS (Transient Stability)	1		"""FileName"", DiffCaseModifiedOnly"	Save transient stability dynamic model records only the auxiliary file format.
+TSWriteOptions	TS (Transient Stability)	2		"""FileName"",[SaveDynamicModel, SaveStabilityOptions, SaveStabilityEvents, SaveResultsEvents, SavePlotDefinitions, SaveTransientLimitMonitors, SaveResultAnalyzerTimeWindow], KeyField"	Save the transient stability option settings to an auxiliary file.
+TSSetSelectedForTransientReferences	TS (Transient Stability)	4		SetWhat, SetHow, [ObjectType List],[ModelType List]	Set the Custom Integer field to a corresponding integer or Selected field to Yes/No for objects referenced in a transient stability model with extra objects.
+TSSaveDynamicModels	TS (Transient Stability)	5		"""FileName"", FileType, ObjectType, Filter, Append"	Save dynamics models for specified object types to file.
+ApplyScheduledActionsAt	Scheduled Actions	1		StartTime, EndTime, Filter, Revert	Applies any scheduled actions that meet the specified filter and are active during the specified window of time.
+IdentifyBreakersForScheduledActions	Scheduled Actions	1		IdentifyFromNormalStatus	For each Scheduled Outage, identifies breakers that are necessary to implement OpenBreakers and CloseBreakers actions.
+RevertScheduledActionsAt	Scheduled Actions	1		StartTime, EndTime, Filter	Applies the opposite of any relevant actions (e.g.
+ScheduledActionsSetReference	Scheduled Actions	0			Set the reference state that is restored prior to applying a time stamp.
+SetScheduleView	Scheduled Actions	1		ViewTime, ApplyActions, UseNormalStatus, ApplyWindow	Sets the View Time for Scheduled Actions.
+SetScheduleWindow	Scheduled Actions	2		StartTime, EndTime, Resolution, ResolutionUnits	Defines the window of interest for Scheduled Actions.
+TimeStepAppendPWW	Time Step Simulation	1	2023-12	"""FileName"",""SolutionTypeString"""	Loads the specified PWW file into the Time Step Simulation, appending it to any timepoints that already exist.
+TimeStepAppendPWWRange	Time Step Simulation	3		"""FileName"", ISO8601StartDateTime, ISO8601EndDateTime, ""SolutionTypeString"""	"""SolutionTypeString"") This command is similar to TimeStepAppendPWW in that it loads timepoints from the file and appends them to any existing timepoints."
+TimeStepAppendPWWRangeLatLon	Time Step Simulation	3		"""FileName"", ISO8601StartDateTime, ISO8601EndDateTime, minLatitude,maxLatitude,minLongitude,maxLongitude,""SolutionTypeString"""	"minLatitude,maxLatitude,minLongitude,maxLongitude,""SolutionTypeString"") (This command was added in the November 3, 2025 patch of Simulator 24) This command is similar to TimeStepAppendPWWRange in that it loads a range of timepoints from the file and appends them to any existing timepoints."
+TimeStepClearResults	Time Step Simulation	2	2024-11	ISO8601StartDateTime, ISO8601EndDateTime	Clears all the Time Step Simulation results, but does not delete the time points.
+TimeStepDeleteAll	Time Step Simulation	0	2023-12		Deletes all of the time points in the Time Step Simulation.
+TimeStepDoRun	Time Step Simulation	2		ISO8601StartDateTime,ISO8601EndDateTime	Solves the Time Step Simulation either for all time points (when there are no parameters) or for the timepoints between ISO8601StartDateTime and ISO8601EndDateTime.
+TimeStepDoSinglePoint	Time Step Simulation	1		ISO8601DateTime	Solves the Time Step Simulation (TSS) for the specified date and time that should be specified in the ISO8601 format.
+TimeStepLoadB3D	Time Step Simulation	1	2024-09	"""FileName"",""SolutionTypeString"""	Loads the specified B3D file into the Time Step Simulation, deleting any timepoints that already exist.
+TimeStepLoadPWW	Time Step Simulation	1	2023-12	"""FileName"",""SolutionTypeString"""	Loads the specified PWW file into the Time Step Simulation, deleting any timepoints that already exist.
+TimeStepLoadPWWRange	Time Step Simulation	3		"""FileName"",ISO8601StartDateTime,ISO8601EndDateTime, ""SolutionTypeString"""	"""SolutionTypeString"") This command is similar to TimeStepLoadPWW in that it loads a PWW file, but only for the date and time values between the start and end datetime values (expressed in ISO8601 format) are loaded."
+TimeStepLoadPWWRangeLatLon	Time Step Simulation	3		"""FileName"",ISO8601StartDateTime,ISO8601EndDateTime, minLatitude,maxLatitude,minLongitude,maxLongitude, ""SolutionTypeString"""	"minLatitude,maxLatitude,minLongitude,maxLongitude, ""SolutionTypeString"") (This command was added in the November 3, 2025 patch of Simulator 24) This command is similar to TimeStepLoadPWWRange in that it loads a PWW file for the date and time values between the start and end datetime values (expressed in ISO8601 format)."
+TimeStepLoadTSB	Time Step Simulation	1		"""FileName"""	Loads the specified TSB file into the Time Step simulation, deleting any timepoints that already exist.
+TimeStepResetRun	Time Step Simulation	0			Resets the run to the beginning.
+TimeStepSaveFieldsClear	Time Step Simulation	0	2024-09	[objecttype]	Clears all the fields associated with the saving of the result values during the time step simulation.
+TimeStepSaveFieldsSet	Time Step Simulation	2	2024-09	objecttype, [fieldlist], filter	Sets the fields associated with determing which result values are saved during the time step simulation, first clearing any previously selected fields and objects for this objecttype.
+TimeStepSaveFieldsSetByObject	Time Step Simulation	3	2024-10	objecttype, [fieldlist], [objectIDList]	Sets the fields associated with determing which result values are saved during the time step simulation by individual objects.
+TIMESTEPSaveSelectedModifyStart	Time Step Simulation	0			(This command was added in Simulator 25) This command is associated with setting the power system objects whose fields should be saved during the time step simulation.
+TIMESTEPSaveSelectedModifyFinish	Time Step Simulation	0			(This command was added in Simulator 25) This command is associated with setting the power system objects whose fields should be saved during the time step simulation.
+TIMESTEPSaveInputCSV	Time Step Simulation	3		"""Filename"", [input field list], "", ISO8601StartDateTime, ISO8601EndDateTime"	This command saves the input fields listed below.
+TimeStepSaveResultsByTypeCSV	Time Step Simulation	4		"ObjectType, ""FileCSVName"", ISO8601StartDateTime, ISO8601EndDateTime"	ISO8601EndDateTime) (This command was added in the January 8, 2024 patch of Simulator 23) Saves the Time Step Simulation results for the specified object type in a CSV file.
+TimeStepSaveTSB	Time Step Simulation	1		"FileName"""	Saves the Time Step Simulation results using the specified TSB file in the latest TSB version.
+TimeStepSavePWW	Time Step Simulation	1	2023-12	"""FileName"""	Saves the existing weather data in the Time Step Simulation using the specified PWW file.
+TimeStepSavePWWRange	Time Step Simulation	3		"""FileName"",ISO8601StartDateTime,ISO8601EndDateTime"	This command is similar to TimeStepSavePWW in that it saves a PWW file, but only for the date and time values between the start and end datetime values (expressed in ISO8601 format).
+TemperatureLimitsBranchUpdate	Weather	0		RatingSetPrecedence, NormalRatingSet, CTGRatingSet	Updates branch limits based on a temperature limit curve and weather station temperature if valid temperature limit curves and weather station data are available for a branch.
+WeatherLimitsGenUpdate	Weather	0		UpdateMax, UpdateMin	Updates generator MW limits based on a weather limit curve and weather station temperature if valid weather limit curves and weather station data are available for a generator.
+WeatherPFWModelsSetInputs	Weather	0	2024-01		Sets the inputs for all the case PFWModels, but does not apply them to the power flow case.
+WeatherPFWModelsSetInputsAndApply	Weather	1	2024-01	SolvePowerFlow	; the required SolvePowerFlow parameter was added in the December 31, 2024 patch of Simulator 23) Sets the inputs for all the case PFWModels and also applies them to the power flow case.
+WeatherPWWFileAllMeasValid	Weather	2		"""PWWFileName"", [field list], ISO8601StartDateTime, ISO8601EndDateTime"	ISO8601EndDateTime) Returns true if the specified PWW file 1) has the all the specified fields, and 2) all the measurements for those fields are valid.
+WeatherPFWModelsRestoreDesignValues	Weather	0	2024-01		Restores the case values changed by WeatherPFWModelsSetInputsAndApply to the design values specified with each PFWModel.
+WeatherPWWFileCombine2	Weather	3	2024-03	"""SourceFileName1"", ""SourceFileName2"", ""DestFileName"""	Combines two PWW files provided the PWW filles have the same weather stations.
+WeatherPWWFileGeoReduce	Weather	6	2024-03	"""SourceFileName"", ""DestFileName"", minLatitude, maxLatitude, minLongitude, maxLongitude"	Reduces the geographic scope of a PWW file.
+WeatherPWWSetDirectory	Weather	1	2024-03	"""PWWFileDirectory"", IncludeSubDirectories"	When getting weather information from PWW files, this command specifies the directory to search, and optionally its subdirectories.
+WeatherPWWLoadForDateTimeUTC	Weather	1	2024-03	ISO8601DateTime	This command loads the weather for the specified date and time.
+EnterDistMasterPassword	Distributed Computing	1		Password	Use this action to enter the master password used to unlock distributed machine login credentials.
+VerifyDistributedComputersAvailable	Distributed Computing	0			Allows distributed computer status to be verified.
+ResetStatusChangeCount	Trainer	0			There is a field with each branch called Status Change Count that tracks the number of times a branch changes status.
+SuppressCommandDialog	Trainer	0			Tells trainer to only send status change commands instead of opening a dialog, which in the case of generators and other objects has additional options.
+ISONEInterfaceLimitCalculation	Customer-Specific Actions	0		"""filename"", variablename"	This script command has been developed specifically for ISO-NE to determine the limit of a specified interface based on a set of logical conditions being met on the given state of the power system.

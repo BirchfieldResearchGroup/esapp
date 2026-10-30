@@ -1,0 +1,35 @@
+# esa++
+
+> Python library for PowerWorld Simulator, through SimAuto. Read and write data as pandas
+> DataFrames, run any script command, and get transient stability results as NumPy arrays.
+> Every object type and field is typed.
+
+Install with `pip install esapp`. It needs Windows, PowerWorld Simulator with SimAuto, and
+Python 3.12 to 3.14. Open a session with `with PowerWorld("case.pwb") as pw:`. Read with
+`pw[Bus, fields, where]` and write with `pw[...] = value`; columns are PowerWorld field names,
+keys first. Object types and fields are classes in `esapp.grid` (`Bus.BusPUVolt`), and lists
+such as `Gen.BidCurve` read and write the same way. Analyses are attributes of the session:
+pw.pf, pw.ctg, pw.sens, pw.groups, pw.pv, pw.opf, pw.atc, pw.qv, pw.gic, pw.fault, pw.files,
+pw.log and pw.ts. Build contingencies with `esapp.ctg`. `pw.pf.ybus()`, `pw.pf.jacobian()` and
+`pw.gic.gmatrix()` return labelled SciPy sparse matrices (`pip install esapp[sparse]`).
+
+## Docs
+
+- [Start here](https://esapp.readthedocs.io/en/stable/): installation and a quickstart
+- [Guide](https://esapp.readthedocs.io/en/stable/guide.html): basics, reading, writing, selecting, analyses, matrices, transient stability, commands, errors, testing
+- [Examples: Data](https://esapp.readthedocs.io/en/stable/examples/data/index.html): data access, grid construction, grid maps, script commands
+- [Examples: Steady state](https://esapp.readthedocs.io/en/stable/examples/steady_state/index.html): power flow, network matrices, sensitivities, contingencies, optimal power flow, transfer capability, faults, GIC
+- [Examples: Stability](https://esapp.readthedocs.io/en/stable/examples/stability/index.html): PV and QV curves
+- [Examples: Dynamics](https://esapp.readthedocs.io/en/stable/examples/dynamics/index.html): transient stability, frequency response, contingency sweeps
+- [API: Data](https://esapp.readthedocs.io/en/stable/api/data/index.html): `PowerWorld`, the schema, errors
+- [API: Steady state](https://esapp.readthedocs.io/en/stable/api/steady_state/index.html): pw.pf, pw.sens, pw.groups, pw.ctg, pw.opf, pw.atc, pw.fault, pw.gic, pw.files, pw.log
+- [API: Stability](https://esapp.readthedocs.io/en/stable/api/stability/index.html): pw.pv, pw.qv
+- [API: Dynamics](https://esapp.readthedocs.io/en/stable/api/dynamics.html): pw.ts, events, results, stores
+- [API: Integration](https://esapp.readthedocs.io/en/stable/api/integration/index.html): SimAuto, testing
+
+## Optional
+
+- [Objects & Fields](https://esapp.readthedocs.io/en/stable/catalog/objects.html): every type in esapp.grid, and what a transient simulation can record
+- [Script commands](https://esapp.readthedocs.io/en/stable/catalog/commands.html): every script command with its parameters
+- [Changelog](https://esapp.readthedocs.io/en/stable/development/changelog.html): what changed in each release
+- [Source](https://github.com/BirchfieldResearchGroup/esapp/tree/main/src/esapp): the package and its docstrings

@@ -1,0 +1,5 @@
+{
+ "sha256": "6efa5ea0dfaae07911a636820a5eada21fdffcb323bf8c6e05715f5178c3ca74",
+ "stdout": "                   PVResultMaxShift PVResultCriticalReason\nPVContingency                                             \nBase Case                   11925.0           Reached Nose\nOne circuit out             11450.0           Reached Nose\nBoth circuits out            7350.0           Reached Nose\nweakest 500 kV bus: TRACY (8002)\n",
+ "figures": 1
+}

@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: If you use esa++, cite the release you used.
+type: software
+title: esa++
+abstract: Python for PowerWorld
+license: Apache-2.0
+repository-code: https://github.com/BirchfieldResearchGroup/esapp
+url: https://esapp.readthedocs.io
+authors:
+  - family-names: Lowery
+    given-names: Luke
+    orcid: https://orcid.org/0009-0000-0029-3403
+  - family-names: Birchfield
+    given-names: Adam

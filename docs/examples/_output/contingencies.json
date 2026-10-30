@@ -1,0 +1,5 @@
+{
+ "sha256": "68fec0a800fe1b294628da198246a58a4a0be7e9c144dfa9c92935ec1ce2fdff",
+ "stdout": "89 of 89 solved; unsolved: []\n                             CTGLabel LimViolCat  LimViolPct\nL_000019PEARLCITY69-000023WAIPAHU69C2 Branch MVA  100.224364\nL_000019PEARLCITY69-000023WAIPAHU69C3 Branch MVA  100.224364\nL_000019PEARLCITY69-000023WAIPAHU69C4 Branch MVA  100.224364\nL_000019PEARLCITY69-000023WAIPAHU69C1 Branch MVA  100.224364\n                                                   LimViolID  LimViolPct\nWAIPAHU69 (   23) -> PEARL CITY69 (   19) CKT 3 at WAIPAHU69       138.3\nWAIPAHU69 (   23) -> PEARL CITY69 (   19) CKT 4 at WAIPAHU69       138.3\n",
+ "figures": 1
+}

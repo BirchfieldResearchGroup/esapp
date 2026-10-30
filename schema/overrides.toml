@@ -1,0 +1,156 @@
+# Hand-maintained corrections, applied to every schema source before code generation.
+# Regenerate after editing:  python -m tools.codegen
+
+[exclude]
+# Object types and fields left out of esapp.grid.
+objects = [
+    "AlarmOptions",
+    "Exciter_Generic",
+    "GIC_Options",
+    "GICGeographicRegionSet",
+    "GenMWMax_SolarPVBasic1",
+    "GenMWMax_SolarPVBasic2",
+    "GenMWMax_TemperatureBasic1",
+    "GenMWMax_WindBasic",
+    "GenMWMax_WindClass1",
+    "GenMWMax_WindClass2",
+    "GenMWMax_WindClass3",
+    "GenMWMax_WindClass4",
+    "GenMWMaxMin_GenMWMaxMinXYCurve",
+    "Governor_Generic",
+    "InjectionGroupModel_GenericInjectionGroup",
+    "LoadCharacteristic_Generic",
+    "LPOPFMarginalControls",
+    "MvarMarginalCostValues",
+    "MWMarginalCostValues",
+    "NEMGroupBranch",
+    "NEMGroupGroup",
+    "NEMGroupNode",
+    "PieSizeColorOptions",
+    "PWBranchDataObject",
+    "RT_Study_Options",
+    "SchedSubscription",
+    "TSFreqSummaryObject",
+    "TSModalAnalysisObject",
+    "TSSchedule",
+    "TSTimePointSolutionDetails",
+    "WeatherPathPoint",
+]
+fields = [
+    "BusMarginalControl",
+    "BusMCMVARValue",
+    "BusMCMWValue",
+    "GEDateIn",
+    "GEDateOut",
+    "LoadGrounded",
+]
+
+# Fields the export lists as read-only that Simulator accepts writes to (Simulator 24).
+[enterable]
+fields = ["Branch.LineStatus", "Bus.BusSlack"]
+
+# Fields that also name their object. Simulator looks an object up by any of these it is
+# given, so a blank placeholder for one makes GetParametersSingleElement fail with "Object
+# not found": esapp reads them another way (observed on every case, Simulator 24).
+[identifiers]
+fields = ["Label", "ObjectID"]
+
+# Fields Simulator sends as a list or range though the export types them as numbers.
+# GetParamsTypedCols rejects a whole read that asks for one as a scalar, so esapp reads these
+# untyped. Found by reading every field of every object type on two cases (Simulator 24);
+# a session that meets another one learns it and warns.
+[nonscalar]
+fields = [
+    "BGNominalkvRange",
+    "GenUnitType:2",
+    "GenUnitType:3",
+    "LabelAppend:2",
+    "LineMeter",
+    "LineMeter:1",
+    "TemperatureLimitMaxField:1",
+    "TemperatureLimitMinField:1",
+]
+
+# Fields the source omits or misdescribes, added to their object type.
+[[add]]
+object = "PlantController_REPCA1"
+name = "Dbd:3"
+dtype = "float"
+description = "Deadband upper in control"
+enterable = true
+
+[[add]]
+object = "PlantController_REPCTA1"
+name = "Dbd:3"
+dtype = "float"
+description = "Deadband upper in control"
+enterable = true
+
+# PowerWorld's strings for Python bools: field -> [true, false], for that field on every type,
+# or "Type.Field" for one type's. Indexed variants (LineStatus:1) use their base field's.
+# Option fields' YES/NO come from schema/option_vocab.toml (codegen --from-simauto --case).
+[vocab]
+"Bus.BusSlack" = ["YES", "NO"]
+Selected = ["YES", "NO"]
+BusSlack = ["YES", "NO"]
+BusStatus = ["Connected", "Disconnected"]
+GenAGCAble = ["YES", "NO"]
+GenAVRAble = ["YES", "NO"]
+GenStatus = ["Closed", "Open"]
+LineStatus = ["Closed", "Open"]
+LoadStatus = ["Closed", "Open"]
+SSStatus = ["Closed", "Open"]
+
+# The transient-stability catalog. TS.<group> holds the recordable fields of <owner> objects, named
+# without <prefix>. Each is a numeric field that one of its owner's TSSave* flags makes
+# Simulator record: the flag named like it (case aside), or a flag it extends by one of
+# `suffixes`. [ts.save] pairs the irregular ones; fields no flag records are left out, and
+# the generator lists them.
+[ts]
+suffixes = ["Input", "Other", "State", "States", "Ohms", "inPU"]
+# Types with TSSave* flags whose TSResultStorageSetAll crashes Simulator 24 (access
+# violation): they mirror Gen and Bus results rather than record their own.
+unrecordable = ["PWTXGen", "QVCurve", "TSStats_Bus", "TSStats_Gen"]
+
+[ts.groups]
+Area = { prefix = "TSArea", owner = "Area" }
+Branch = { prefix = "TSACLine", owner = "Branch" }
+Bus = { prefix = "TSBus", owner = "Bus" }
+BusPair = { prefix = "TSBusPair", owner = "BusPair" }
+DCLine = { prefix = "TSDCLine", owner = "DCTransmissionLine" }
+Gen = { prefix = "TSGen", owner = "Gen" }
+InjectionGroup = { prefix = "TSInjectionGroup", owner = "InjectionGroup" }
+Interface = { prefix = "TSInterface", owner = "Interface" }
+LineShunt = { prefix = "TSLineShunt", owner = "LineShunt" }
+Load = { prefix = "TSLoad", owner = "Load" }
+MTDCConverter = { prefix = "TSConverter", owner = "MTDCConverter" }
+MTDCRecord = { prefix = "TSMultiTerminalDC", owner = "MTDCRecord" }
+Shunt = { prefix = "TSShunt", owner = "Shunt" }
+Substation = { prefix = "TSSub", owner = "Substation" }
+System = { prefix = "TSSystem", owner = "PWCaseInformation" }
+Transformer = { prefix = "TSACLine", owner = "Transformer" }
+VSCDCLine = { prefix = "TSVSCDCLine", owner = "VSCDCLine" }
+Zone = { prefix = "TSZone", owner = "Zone" }
+
+# Field -> the flags that record it (any one suffices), where the naming rule is wrong.
+# Observed on Simulator 24 (build 2025-12-11) by setting one flag at a time.
+[ts.save]
+"Bus.Frequency" = ["TSSaveBusFreq"]
+"Bus.TSBusRad" = ["TSSaveBusDeg"]
+"Bus.TSBusVinKV" = ["TSSaveBusVPU"]
+"Gen.TSAccelP" = ["TSSaveGenPAccel"]
+"Gen.TSGenAppImpR" = ["TSSaveGenP", "TSSaveGenQ", "TSSaveGenTermVPU"]
+"Gen.TSGenAppImpX" = ["TSSaveGenP", "TSSaveGenQ", "TSSaveGenTermVPU"]
+"Load.TSLoadIAMPS" = ["TSSaveBusLoadIPU"]
+"Load.TSLoadIDeg" = ["TSSaveBusLoadIDeg"]
+"Load.TSLoadIPU" = ["TSSaveBusLoadIPU"]
+"Load.TSLoadNPT" = ["TSSaveBusLoadNPT"]
+"Load.TSLoadP" = ["TSSaveBusLoadP"]
+"Load.TSLoadQ" = ["TSSaveBusLoadQ"]
+"Load.TSLoadS" = ["TSSaveBusLoadP", "TSSaveBusLoadQ"]
+"Load.TSLoadStates" = ["TSSaveBusLoadStates"]
+"Load.TSLoadVDeg" = ["TSSaveBusDeg"]
+"Load.TSLoadVinKV" = ["TSSaveBusVPU"]
+"Load.TSLoadVPU" = ["TSSaveBusVPU"]
+"Shunt.TSShuntBusVinKV" = ["TSSaveShuntBusVPU"]
+"Shunt.TSShuntIAMPS" = ["TSSaveShuntIPU"]

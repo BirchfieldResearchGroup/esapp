@@ -1,0 +1,5 @@
+{
+ "sha256": "c76b24482edc9e39d7babefb1752f234c33c9c08f2156a640ca25595df6dcc52",
+ "stdout": "tripped 7419 MW of 140297 MW, at bus 4131\nnadir 59.591 Hz at 1.99 s\nsettling near 59.886 Hz\n",
+ "figures": 1
+}

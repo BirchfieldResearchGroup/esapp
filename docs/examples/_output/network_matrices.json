@@ -1,0 +1,5 @@
+{
+ "sha256": "a9f2a406bbf02f96ad20b5fa75a04fc00d8dd0463989ae9832045235e9f90f2c",
+ "stdout": "<Matrix 243 x 243, 945 nonzero: ['BusNum'] by ['BusNum']>\n<Matrix 486 x 486, 3662 nonzero: ['equation', 'BusNum'] by ['variable', 'BusNum']>\n{'pq': 189, 'pv': 53, 'slack': 1}\nBusNum\n5032    9569.2\n5002    9080.3\n1431    8921.8\nName: MVA, dtype: float64\n",
+ "figures": 1
+}

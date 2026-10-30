@@ -1,0 +1,5 @@
+{
+ "sha256": "6f42f9c464919cf1e57f9701e7e94ed4a7608ed6b0c2840681cafd0202a65296",
+ "stdout": "NotConverged - NR PowerFlow - Exceeded maximum number of iterations. User Entered STOP after unsuccessful SolvePowerFlow action\niterations allowed again: 50\n243 buses, voltages from 0.962 to 1.131 pu\n",
+ "figures": 1
+}

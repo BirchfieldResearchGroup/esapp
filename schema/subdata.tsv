@@ -1,0 +1,97 @@
+owner	name	columns	description
+ATC_Options	RLScenarioName	Index,Name	These three sections contain the pretty names of the RL Scenarios, G Scenarios, and I Scenarios.
+ATC_Options	GScenarioName	Index,Name	These three sections contain the pretty names of the RL Scenarios, G Scenarios, and I Scenarios.
+ATC_Options	IScenarioName	Index,Name	These three sections contain the pretty names of the RL Scenarios, G Scenarios, and I Scenarios.
+ATC_Options	ATCMemo		This section contains the memo text for the ATC analysis.
+ATCExtraMonitor	ATCFlowValue	MWFlow,TransferLevel	This subdata section contains a list of a flow values for specified transfer levels.
+ATCScenario	TransferLimiter	LimitingElement,LimitingContingency,MaxFlow,PTDF,OTDF,LimitUsed,PreTransEst,IterativelyFound	This subdata section contains a list of the TransferLimiters for this scenario.
+ATCScenario	ATCExtraMonitor	MonitorDescription,InitialValue,Sensitivity,ATCFlowValue	This subdata section contains a list of the ATCExtraMonitors for this scenario.
+Bus	MWMarginalCostValues		These three sections contain specific values computed for an OPF solution.
+Bus	MvarMarginalCostValues		These three sections contain specific values computed for an OPF solution.
+Bus	LPOPFMarginalControls		These three sections contain specific values computed for an OPF solution.
+BusViewFormOptions	BusViewBusField	Location,FieldDescription	The values represent specific fields on the custom defined bus view onelines.
+BusViewFormOptions	BusViewFarBusField	Location,FieldDescription	The values represent specific fields on the custom defined bus view onelines.
+BusViewFormOptions	BusViewGenField	Location,FieldDescription	The values represent specific fields on the custom defined bus view onelines.
+BusViewFormOptions	BusViewLineField	Location,FieldDescription	The values represent specific fields on the custom defined bus view onelines.
+BusViewFormOptions	BusViewLoadField	Location,FieldDescription	The values represent specific fields on the custom defined bus view onelines.
+BusViewFormOptions	BusViewShuntField	Location,FieldDescription	The values represent specific fields on the custom defined bus view onelines.
+ColorMap	ColorPoint	Value,Color,Alpha	A colorpoint is simply described by a real number (between 0 and 100) indicating the percentage
+Contingency	CTGElementAppend		Normally when reading in contingency definitions, the CTGElement SubData section is used to define the list of elements.
+Contingency	CTGElement	Action,ModelCriteria,TOPOLOGYCHECK,POSTCHECK,SOLUTIONFAIL,CHECK,ALWAYS,NEVER	A contingency element is described by up to the following entries.
+Contingency	LimitViol	ViolType,ViolElement,Limit,ViolValue,PTDF,OTDF,InitialValue,Reason,CTGSpecifiedLimit	A LimitViol is used to describe the results of a contingency analysis run.
+Contingency	Sim_Solution_Options		These describe the power flow solution options which should be used under this particular contingency.
+Contingency	WhatOccurredDuringContingency		Each line of this subdata section is part of a text description of what actually ended up being implemented for this contingency.
+Contingency	ContingencyMonitoringException		Each line of this subdata section contains a string identifying a specially handled monitored element for this contingency followed by a string indicating how this monitored element should be handled with this contingency.
+CTG_Options	Sim_Solution_Options		These describe the power flow solution options which should be used under this particular contingency.
+CTGElementBlock	CTGElement		This format is the same as for the Contingency objecttype, however, you cannot call a ContingencyBlock from within a contingencyblock.
+CTGElementBlock	CTGElementAppend		When a subdata section is defined as CTGElementAppend rather than CTGElement, the actions of this subdata section will be appended to the contingency actions, instead of replacing them.
+CustomColors	CustomColors		These describe the customized colors used in Simulator, which are specified by the user.
+CustomCaseInfo	ColumnInfo		Each line of this SUBDATA section can be used for specifying the column width of particular columns of the respective Custom Case Information Sheet.
+DataGrid	ColumnInfo	Variablename,ColumnWidth,TotalDigits,DecimalPoints,TabBreak,TabCaption,RowBreak,RowCaption,ColBreak	Contains a description of the columns which are shown in the respective data grid.
+DataGrid	ColumnContourInfo	ColumnNumber,UseAbsValue,IgnoreValuesAbove,IgnoreValuesBelow,AbsMin,LimMin,Nominal,LimMax,AbsMax,ColorMapName,ColorMapBrightness,ColorMapReverseColors	Contains a description of the column contour settings
+DynamicFormatting	DynamicFormattingContextObject	DisplayObjectType	This subdata section contains a list of the display object types which are chosen to be selected.
+DynamicFormatting	LineThicknessLookupMap	FieldName,UseDiscrete	The values of the lookup table for the characteristics that can be modified by the dynamic formatting tool.
+DynamicFormatting	LineColorLookupMap	FieldName,UseDiscrete	The values of the lookup table for the characteristics that can be modified by the dynamic formatting tool.
+DynamicFormatting	FillColorLookupMap	FieldName,UseDiscrete	The values of the lookup table for the characteristics that can be modified by the dynamic formatting tool.
+DynamicFormatting	FontColorLookupMap	FieldName,UseDiscrete	The values of the lookup table for the characteristics that can be modified by the dynamic formatting tool.
+DynamicFormatting	FontSizeLookupMap	FieldName,UseDiscrete	The values of the lookup table for the characteristics that can be modified by the dynamic formatting tool.
+DynamicFormatting	BlinkColorLookupMap	FieldName,UseDiscrete	The values of the lookup table for the characteristics that can be modified by the dynamic formatting tool.
+DynamicFormatting	XoutColorLookupMap	FieldName,UseDiscrete	The values of the lookup table for the characteristics that can be modified by the dynamic formatting tool.
+DynamicFormatting	FlowColorLookupMap	FieldName,UseDiscrete	The values of the lookup table for the characteristics that can be modified by the dynamic formatting tool.
+DynamicFormatting	SecondaryFlowColorLookupMap	FieldName,UseDiscrete	The values of the lookup table for the characteristics that can be modified by the dynamic formatting tool.
+Filter	Condition	Variablename,Condition,Value	Conditions store the conditions of the filter.
+Gen	BidCurve	MW,Price	BidCurve subdata is used to define a piece-wise linear cost curve (or a bid curve).
+Gen	ReactiveCapability	MW,MinMVAR,MaxMVAR	Reactive Capability subdata is used to the reactive capability curve of the generator.
+GeoDataViewStyle	TotalAreaValueMap	FieldValue,TotalArea	This subdata section is used to define the lookup table for determining the total area size of geographic
+GeoDataViewStyle	RotationRateValueMap	FieldValue,RotationRate	This subdata section is used to define the lookup table for determining the rotation rate of geographic
+GeoDataViewStyle	RotationAngleValueMap	FieldValue,RotationAngle	This subdata section is used to define the lookup table for determining the rotation angle of geographic
+GeoDataViewStyle	LineThicknessValueMap	FieldValue,LineThickness	This subdata section is used to define the lookup table for determining the thickness of the border line
+GlobalContingencyActions	CTGElementAppend		This format is the same as for the Contingency objecttype except that the SolvePowerFlow action is not allowed.
+GlobalContingencyActions	CTGElement		This format is the same as for the Contingency objecttype except that the SolvePowerFlow action is not allowed.
+HintDefValues	HintObject	FieldDescription	Stores the values for the custom hints.
+InjectionGroup	PartPoint	PointType,PointBusNum,PointID,PointParFac,ParFacCalcType	A participation point is used to describe the contents of an injection group.
+Interface	InterfaceElement		A interfaces's subdata contains a list of the elements in the interface.
+KMLExportFormat	DataBlockDescription		This subdata section is used to describe the objects and fields that should be saved to a KML file.
+LimitSet	LimitCost	Percent,Cost	LimitCost records describe the piece-wise unenforceable constraint cost records for use by unenforceable
+Load	BidCurve	MW,Price	BidCurve subdata is used to define a piece-wise linear benefit curve (or a bid curve).
+LPVariable	LPVariableCostSegment	Cost,Minimum,Maximum,Artificial	Stores the cost segments for the LP variables.
+ModelCondition	Condition	ABS,REF,ABSREF	ModelConditions are the combination of an object and a Filter.
+ModelExpression	LookupTable	Because,This,Starts,With,X1x2,This,Represent,A,Two,Dimensional	LookupTables are used inside Model Expressions sometimes.
+ModelFilter	ModelCondition	ModelConditionName,NotCondition	A Model Filter's subdata contains a list of each ModelCondition in the filter.
+MTDCRecord	MTDCBus	DCBusNum,DCBusName,ACTerminalBus,DCBusVoltage,DCArea,DCZone,DCOwner	For this SUBDTA section, each DC Bus is described on a single line of text with exactly 8 fields specified.
+MTDCRecord	MTDCConverter	BusNum,MTDCNBridges,MTDCConvEBas,MTDCConvAngMxMn,MTDCConvComm,MTDCConvXFRat,MTDCFixedACTap,MTDCConvTapVals,MTDCConvSetVL,MTDCConvDCPF,MTDCConvMarg,MTDCConvType,MTDCConvStatus,MTDCConvSchedVolt,MTDCConvIDC,MTDCConvPQ	For this SUBDTA section, each AC/DC Converter is described by exactly 24 field which may be spread
+MTDCRecord	MTDCTransmissionLine	DCFromBusNum,DCToBusNum,CKTID,Resistance,Inductance	For this SUBDATA section, each DC Transmission Line is described on a single line of text with exactly 5
+MultiSectionLine	Bus		A multi section line's subdata contains a list of each dummy bus, starting with the one connected to the From Bus of the MultiSectionLine and proceeding in order to the bus connected to the To Bus of the Line.
+MultiSectionLine	BusRenumber		This subdata section allows renumbering of the dummy buses.
+Nomogram	InterfaceElementA		InterfaceElementA values represent the interface elements for the first interface of the nomogram.
+Nomogram	InterfaceElementB		InterfaceElementA values represent the interface elements for the first interface of the nomogram.
+Nomogram	NomogramBreakPoint	LimA,LimB	This subdata section contains a list of the vertex points on the nomogram limit curve.
+NomogramInterface	InterfaceElement		This follows the same convention as the InterfaceElement SUBDATA section described with the Interface objecttype.
+Owner	Bus		This subdata section contains a list of the buses which are owned by this owner.
+Owner	Load		This subdata section contains a list of the loads which are owned by this owner.
+Owner	Gen		This subdata section contains a list of the generators which are owned by this owner and the fraction of ownership.
+Owner	Branch		This subdata section contains a list of the branches which are owned by this owner and the fraction of ownership.
+PostPowerFlowActions	CTGElementAppend		This format is the same as for the Contingency objecttype except that Abort, ContingencyBlock, and SolvePowerFlow actions are not allowed.
+PostPowerFlowActions	CTGElement		This format is the same as for the Contingency objecttype except that Abort, ContingencyBlock, and SolvePowerFlow actions are not allowed.
+PWCaseInformation	PWCaseHeader		This subdata section contains the Case Description in free-formatted text.
+PWFormOptions	PieSizeColorOptions	ObjectName,FieldName,UseDiscrete,UseOtherSettings	There can actually be several PieSizeColorOptions subdata sections for each PWFormOptions object.
+PWLPOPFCTGViol	OPFControlSense		This stores the control sensitivities for each contingency violation during OPF/SCOPF analysis.
+PWLPOPFCTGViol	OPFBusSenseP		This stores the control sensitivities for each contingency violation during OPF/SCOPF analysis.
+PWLPOPFCTGViol	OPFBusSenseQ		This stores the control sensitivities for each contingency violation during OPF/SCOPF analysis.
+PWLPTabRow	LPBasisMatrix	Var,Value	This subdata section stores the basis matrix associated with the final LP OPF solution.
+PWPVResultListContainer	PWPVResultObject	GeneralSections	This subdata section contains the results of a particular PV Curve scenario.
+PWPVResultListContainer	LimitViol		This subdata section contains the limit violations of a particular PV Curve scenario.
+PWPVResultListContainer	PVBusInadequateVoltages		This subdata section contains a list of buses that are considered to have inadequate voltages at each transfer level for a particular PV Curve scenario.
+PWQVResultListContainer	PWPVResultObject		This subdata section contains the results of a particular QV Curve scenario.
+QVCurve	QVPoints	PerUnitVoltage,FictitiousMvar,ShuntDeviceMvar,TotalMvar,ReservesMvar,ReservesTotalMvar	This subdata section contains a list of the QV Curve points calculated for the respect QVCurve.
+QVCurve_Options	Sim_Solution_Options		This subdata section contains solution options that will be used when running QV Curves.
+RemedialAction	CTGElementAppend		This format is the same as for the Contingency objecttype except that the SolvePowerFlow action is not allowed.
+RemedialAction	CTGElement		This format is the same as for the Contingency objecttype except that the SolvePowerFlow action is not allowed.
+SelectByCriteriaSet	SelectByCriteriaSetType		This subdata section contains a list of the display object types which are chosen to be selected.
+SelectByCriteriaSet	Area		This subdata section contains a list of areas which were chosen to be selected.
+SelectByCriteriaSet	Zone		This subdata section contains a list of zones which were chosen to be selected.
+SelectByCriteriaSet	ScreenLayer		This subdata section contains a list of screen layers which were chosen to be selected.
+StudyMWTransactions	ImportExportBidCurve	MW,Price	This subdata section contains the piecewise linear transactions cost curves for areas involved in a MW transaction.
+SuperArea	SuperAreaArea		This subdata section contains a list of areas within each super area.
+TSSchedule	SchedPoint	Date,Hour,Pointtype,NumericValue,BooleanValue,TextValue,Audiofilename	This section stores the schedule time points used in Time Step Simulation.
+UserDefinedDataGrid	ColumnInfo		This follows the same convention as the ColumnInfo SUBDATA section described with the DataGrid objecttype.

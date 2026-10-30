@@ -1,0 +1,5 @@
+{
+ "sha256": "22a338257347f8780dbb398bb8d24b5dd17678248d369c500837bead37b00b13",
+ "stdout": "<Result 'bus 1': 1203 steps x 37 columns, 0.2 MiB>\n31 of 37 buses fell below half voltage\n",
+ "figures": 1
+}

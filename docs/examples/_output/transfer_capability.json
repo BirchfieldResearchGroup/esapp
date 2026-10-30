@@ -1,0 +1,5 @@
+{
+ "sha256": "b38d8a58a0bf283f805a264adfbe792c78e8c73cfe9f95c703981822a19943df",
+ "stdout": "36.1 MW more can move from HALEIWA69 to HONOLULU138\n CTGViolMaxLine       LimViolID  LimViolValue  LimViolLimit\n           36.1  BRANCH 31 33 1          23.2          38.0\n           60.5 BRANCH 28 31  1          33.4          58.3\n           70.8  BRANCH 20 30 1         -36.5         -64.4\n          113.7  BRANCH 28 30 1          36.5          70.0\n          113.7  BRANCH 28 30 2          36.5          70.0\n",
+ "figures": 1
+}

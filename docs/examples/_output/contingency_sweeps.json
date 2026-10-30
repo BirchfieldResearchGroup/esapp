@@ -1,0 +1,5 @@
+{
+ "sha256": "e792b1732a65ef3605214918779b219571951e32d399eb2ceccb2e9695893c2b",
+ "stdout": "gen 2-1: memmap, swing 0.00019 pu\ngen 23-1: memmap, swing 0.00574 pu\ngen 26-1: memmap, swing 0.00151 pu\ngen 27-1: memmap, swing 0.00238 pu\n",
+ "figures": 1
+}

@@ -1,0 +1,5 @@
+{
+ "sha256": "052ec2a78e9b52cf6c2d9ad9dd5f5a157455789a2c849e964da5ddf6dcb8d6a4",
+ "stdout": "1677 transformers; total losses 1918 to 2205 Mvar\nBusNum3W  BusNum3W:1  BusNum3W:2  LineCircuit\n250357    250360      0           1              41.1\n260185    260186      0           1              25.2\n210347    210349      0           1              24.9\ndtype: float64\n",
+ "figures": 1
+}

@@ -1,0 +1,5 @@
+{
+ "sha256": "b1ef9bcb07efe5d2005eb684d7fd66589f2f882a2b097bd46f1ec8f88e9916d6",
+ "stdout": "flow on each circuit: 71.4 MVA\nLMP without the limit: 5.14 $/MWh at every bus\n        BusMCMW  BusMWMCEnergy  BusMWMCCongestion  BusMWMCLosses\nBusNum                                                          \n23         4.91           4.91                0.0            0.0\n19         7.41           4.91                2.5            0.0\n",
+ "figures": 1
+}

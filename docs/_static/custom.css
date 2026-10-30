@@ -1,0 +1,353 @@
+/* esa++: teal on steel, Inter headings, an example and what it printed read as one block. */
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/Inter-SemiBold.ttf") format("truetype");
+}
+
+body[data-theme] {
+  --font-stack--headings: "Inter", var(--font-stack);
+  --radius: 0.5rem;
+  --color-sidebar-link-text--top-level: var(--color-foreground-primary);
+  --color-link-underline: color-mix(in srgb, var(--color-brand-content) 32%, transparent);
+  --color-link-underline--hover: var(--color-brand-content);
+  --color-link-underline--visited: var(--color-link-underline);
+  --color-link-underline--visited--hover: var(--color-brand-content);
+  --color-highlighted-background: color-mix(in srgb, var(--color-brand-primary) 22%, transparent);
+  --color-highlight-on-target: var(--color-highlighted-background);
+  --color-table-header-background: transparent;
+  --color-table-border: var(--color-background-border);
+  --color-api-background-hover: var(--color-background-secondary);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-brand-primary) 26%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+article a {
+  text-underline-offset: 0.18em;
+}
+
+/* Brand and navigation */
+
+.sidebar-brand {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  padding-block: 1.25rem 1rem;
+}
+
+.sidebar-logo-container {
+  margin: 0;
+}
+
+.sidebar-logo {
+  width: 1.75rem;
+}
+
+.sidebar-brand-text {
+  font-family: var(--font-stack--headings);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.sidebar-tree .current-page > .reference {
+  color: var(--color-brand-primary);
+}
+
+/* Type */
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2.25rem;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: 1.45rem;
+  letter-spacing: -0.015em;
+  margin-top: 2.75rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+article p,
+article li,
+article dd {
+  line-height: 1.6;
+}
+
+.lede {
+  font-size: 1.125rem;
+  color: var(--color-foreground-secondary);
+}
+
+.lede p {
+  line-height: 1.55;
+}
+
+/* Banner: the column's full width. Figures: drawn to fit the column, so every one shows at
+   its own size and their type matches; on narrow screens they shrink. */
+
+.banner {
+  margin: 0.5rem 0 1.75rem;
+}
+
+.banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+img.figure {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 1.75rem auto 1rem;
+}
+
+/* The banner carries the home page's name; its heading stays for readers and search. */
+
+#esa > h1 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.caption {
+  margin-bottom: 2.5rem;
+  font-size: var(--font-size--small);
+  color: var(--color-foreground-muted);
+}
+
+/* Code: an example and what it printed read as one block */
+
+body[data-theme] .highlight {
+  border: 1px solid var(--color-background-border);
+  border-radius: var(--radius);
+  background: var(--color-code-background);
+}
+
+.highlight pre {
+  padding: 0.75rem 1rem;
+}
+
+div[class*="highlight-"]:has(+ .output) {
+  margin-bottom: 0;
+}
+
+div[class*="highlight-"]:has(+ .output) > .highlight {
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+
+div.output[class*="highlight-"] {
+  margin-top: 0;
+}
+
+body[data-theme] .output .highlight {
+  border-top: 0;
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+  background: var(--color-background-primary);
+}
+
+.output .highlight pre {
+  color: var(--color-foreground-secondary);
+}
+
+/* Tables */
+
+table.docutils {
+  width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: var(--font-size--small);
+}
+
+table.docutils th,
+table.docutils td {
+  border-inline: 0;
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+table.docutils th {
+  font-weight: 600;
+  vertical-align: bottom;
+  border-bottom-color: var(--color-foreground-border);
+}
+
+table.docutils td p {
+  margin: 0;
+}
+
+/* The generated catalogs: a name, then what it takes, then what it does */
+
+table.catalog td:first-child {
+  white-space: nowrap;
+}
+
+table.catalog td:last-child {
+  color: var(--color-foreground-secondary);
+}
+
+p.rubric {
+  margin-top: 2.25rem;
+  font-family: var(--font-stack--headings);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+/* Gallery: each example as a card, its figure (or its code) above its name and line */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 2.5rem;
+}
+
+.gallery p.card {
+  margin: 0;
+}
+
+.gallery .card > a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--color-background-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  color: var(--color-foreground-primary);
+  text-decoration: none;
+  transition: border-color 120ms ease-out;
+}
+
+.gallery .card > a:hover,
+.gallery .card > a:focus-visible {
+  border-color: var(--color-brand-primary);
+}
+
+.gallery .preview {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--color-background-border);
+  background: var(--color-background-secondary);
+  object-fit: contain;
+}
+
+.gallery .preview.code {
+  overflow: hidden;
+  font-family: var(--font-stack--monospace);
+  font-size: 0.62rem;
+  line-height: 1.5;
+  white-space: pre;
+  color: var(--color-foreground-secondary);
+}
+
+.gallery .card-title {
+  padding: 0.7rem 0.9rem 0.15rem;
+  font-family: var(--font-stack--headings);
+  font-weight: 600;
+}
+
+.gallery .card-line {
+  padding: 0 0.9rem 0.8rem;
+  font-size: var(--font-size--small);
+  line-height: 1.45;
+  color: var(--color-foreground-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery .card > a {
+    transition: none;
+  }
+}
+
+/* Example index */
+
+.examples dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  margin: 1.25rem 0 2rem;
+}
+
+.examples dl > dt,
+.examples dl > dd {
+  margin: 0;
+  padding: 0.7rem 2rem 0.7rem 0;
+  border-top: 1px solid var(--color-background-border);
+}
+
+.examples dl > dt {
+  font-weight: 600;
+}
+
+.examples dl > dd {
+  color: var(--color-foreground-secondary);
+}
+
+.examples dd p {
+  margin: 0;
+}
+
+@media (max-width: 40em) {
+  .examples dl {
+    display: block;
+  }
+
+  .examples dl > dt {
+    padding-bottom: 0;
+  }
+
+  .examples dl > dd {
+    padding-top: 0.25rem;
+    border-top: 0;
+  }
+}
+
+/* Author and project links at the end of the home page */
+
+#esa #author {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-background-border);
+  font-size: var(--font-size--small);
+  color: var(--color-foreground-secondary);
+}
+
+#esa #author > h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.125rem;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1.25rem;
+}

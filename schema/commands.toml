@@ -1,0 +1,154 @@
+# Corrections and types for the script-command catalog.
+#
+# schema/commands.tsv is extracted from PowerWorld's "Auxiliary File Format" document
+# (python -m tools.codegen --document DOCUMENT); this file fixes what the document's
+# layout garbles and types what it leaves loose. Codegen fails on entries naming commands or
+# parameters that no longer exist, so stale corrections surface instead of lingering.
+
+# Commands that leave the case's data as it was: they write files or the log, show things,
+# or compute sensitivities. They run in read-only sessions.
+read_only = [
+    "Animate",
+    "Calculate*",
+    "CopyFile",
+    "DeleteFile",
+    "EnumerateDDLOnelines",
+    "Export*",
+    "Log*",
+    "MessageBox",
+    "OpenDataView",
+    "Save*",
+    "SendtoExcel",
+    "SetCurrentDirectory",
+    "TSGet*",
+    "TSValidate",
+    "*Write*",
+]
+
+# Keyword sets, emitted as Literal aliases in esapp.commands.
+[words]
+SolutionMethod = ["RECTNEWT", "POLARNEWTON", "GAUSSSEIDEL", "FASTDEC", "ROBUST", "DC"]
+LinearMethod = ["AC", "DC", "DCPS"]
+FaultType = ["SLG", "LL", "3PB", "DLG"]
+ResultsLayout = ["SINGLE", "SEPARATE", "JSIS"]
+ImageType = ["PNG", "JPG", "GIF", "BMP", "EMF", "WMF"]  # PNG works though undocumented; SVG is refused
+JacForm = ["P", "R", "DC"]
+MatrixFile = ["M", "TXT", "EXPM"]
+LODFWhich = ["OUTAGES", "CLOSURES"]  # Simulator checks the first letter only
+
+# Python names for the document's run-together spellings, keyed by their letters.
+[names]
+diffmode = "diff_mode"
+faulttype = "fault_type"
+faultlocation = "fault_location"
+fieldlist = "fields"
+filedirectory = "directory"
+filename = "filename"  # "FileName" and "filename" alike
+filetype = "file_type"
+filtername = "filter_name"
+filterstring = "filter_string"
+includedate = "include_date"
+includemilliseconds = "include_milliseconds"
+includetime = "include_time"
+newctgname = "new_ctg_name"
+newfilename = "new_filename"
+objecttype = "object_type"
+oldfilename = "old_filename"
+scalemarker = "scale_marker"
+scaletype = "scale_type"
+subdatalist = "subdata"
+valuelist = "values"
+variablename = "variable_name"
+workbookname = "workbook_name"
+worksheetname = "worksheet_name"
+
+# Parameter types by Python name, in every command ([command.X.types] wins).
+[types]
+sol_method = "SolutionMethod"
+linear_method = "LinearMethod"
+fault_type = "FaultType"
+image_type = "ImageType"
+
+# ---------------------------------------------------------------------- per command
+# signature: replaces the document's; required: leading parameters without a default;
+# names/types: by the generated Python name; mutates, since, section, description.
+
+[command.CalculateLODFScreening]
+mutates = true  # writes its findings into custom fields
+
+[command.CloseWithBreakers]
+names = { filter_or_object_identifier = "filter" }
+
+[command.OpenWithBreakers]
+names = { filter_or_object_identifier = "filter" }
+
+[command.CTGCompareTwoListsofContingencyResults]
+signature = '"ControllingFilename", "ComparisonFilename"'  # each may be Kw.PRESENT instead
+
+[command.DoCTGAction]
+signature = '"contingency action"'  # the bracketed spelling is the same text, unquoted
+
+[command.Fault]
+# The bus spelling. A branch fault puts its location (percent from the near bus) second,
+# which pw.fault does; Simulator takes 1 to 5 parameters.
+names = { bus_num = "bus" }
+types = { r = "float", x = "float" }
+
+[command.SaveData]
+required = 4  # subdata, filter, sorting and layout have defaults
+types = { subdata = "words" }  # SUBDATA names, e.g. [PWPVResultObject]
+
+[command.SaveDataWithExtra]
+required = 4
+types = { subdata = "words" }
+
+[command.SolvePowerFlow]
+names = { filename1 = "on_success", filename2 = "on_failure" }
+
+[command.SolvePrimalLP]
+names = { filename1 = "on_success", filename2 = "on_failure" }
+
+[command.TIMESTEPSaveInputCSV]
+signature = '"Filename", [input field list], ISO8601StartDateTime, ISO8601EndDateTime'
+
+[command.TimeStepSaveTSB]
+signature = '"FileName"'
+
+[command.TSCalculateCriticalClearTime]
+names = { branch_or_filter = "filter" }
+types = { filter = "filter" }
+
+[command.TSClearResultsFromRAM]
+names = { all_selected_contingency_name = "contingency" }
+types = { contingency = "str" }  # a name, or Kw.ALL / Kw.SELECTED
+
+[command.TSGetResults]
+signature = '"FileName", Layout, [Contingencies], [Plots], StartTime, EndTime'
+required = 4
+types = { layout = "ResultsLayout" }
+
+[command.TSLoadPTI]
+signature = '"FileName", "MCREfilename", "MTRLOfilename", "GNETfilename", "BASEGENfilename", "MODREMOVEfilename"'
+
+[command.TSResultStorageSetAll]
+names = { yes_no = "store" }
+types = { store = "bool" }
+
+[command.UnSelectAll]
+required = 1
+
+[command.SaveJacobian]
+names = { jac_file_name = "filename", jid_file_name = "id_filename" }
+types = { jac_form = "JacForm", file_type = "MatrixFile" }
+
+[command.GICSaveGMatrix]  # "GMatixIDFileName": the document's spelling
+names = { g_matrix_file_name = "filename", g_matix_id_file_name = "id_filename" }
+
+[command.CalculateVoltSense]
+names = { bus_num = "bus" }
+
+[command.CalculateLODF]
+names = { branch_nearbusnum_farbusnum_ckt = "branch" }
+
+[command.CalculateLODFMatrix]
+types = { which_ones = "LODFWhich" }

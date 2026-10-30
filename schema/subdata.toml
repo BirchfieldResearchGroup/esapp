@@ -1,0 +1,27 @@
+# Corrections to the SUBDATA catalog.
+#
+# schema/subdata.tsv is extracted from PowerWorld's "Auxiliary File Format" document
+# (python -m tools.codegen --document DOCUMENT): each object type's SUBDATA and its columns.
+# `columns = []` reads a SUBDATA's values by position. Codegen fails on an entry naming a
+# SUBDATA the document no longer lists.
+
+[subdata."InjectionGroup.PartPoint"]  # the sixth is documented apart from the other five
+columns = ["PointType", "PointBusNum", "PointID", "PointParFac", "ParFacCalcType", "ParFacNotDynamic"]
+
+[subdata."Contingency.CTGElement"]  # a two-column page garbles the list; ContingencyElement has named fields
+columns = []
+
+[subdata."Interface.InterfaceElement"]  # one quoted description per line
+columns = ["Element"]
+
+[subdata."NomogramInterface.InterfaceElement"]
+columns = ["Element"]
+
+[subdata."ModelCondition.Condition"]  # what was read is a list of keywords, not columns
+columns = []
+
+[subdata."ModelExpression.LookupTable"]  # its header is prose
+columns = []
+
+[subdata."PWPVResultListContainer.PWPVResultObject"]  # rows of their own shape: pw.pv reads them
+columns = []

@@ -1,0 +1,62 @@
+name: CI
+
+# No job here needs PowerWorld. The live tests (tests/live) run on a machine with Simulator:
+# `pytest tests/live --pw=require` with ESAPP_TEST_CASE set; here they are skipped.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@18d369b23da25a81e9458561248e1aafff6a70fa # v10.3.1
+      - run: uv sync --locked --group lint
+      - run: uv run ruff check
+      - run: uv run ruff format --check
+      - run: uv run pyright
+      - run: uv run python -m tools.codegen --check
+      - run: uv build
+      - run: uvx twine check --strict dist/*
+
+  unit:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.12", "3.13", "3.14"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@18d369b23da25a81e9458561248e1aafff6a70fa # v10.3.1
+        with:
+          python-version: ${{ matrix.python }}
+      - run: uv sync --locked --group test
+      - run: uv run coverage run -m pytest --pw=off
+      - run: uv run coverage report
+
+  docs:  # as Read the Docs builds them: a warning, or an example changed since its capture, fails
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@18d369b23da25a81e9458561248e1aafff6a70fa # v10.3.1
+        with:
+          python-version: "3.14"
+      - run: uv run --locked --no-default-groups --group docs sphinx-build -W --keep-going -b html docs docs/_build/html

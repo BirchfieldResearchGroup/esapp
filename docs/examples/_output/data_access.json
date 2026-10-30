@@ -1,0 +1,5 @@
+{
+ "sha256": "7f65b4bf7d81cb5ebf0c1997c49b41457a00bcb330990ff70deaef56c944a5d3",
+ "stdout": "   BusNum   BusName  BusNomVolt\n0       1  ALOHA138       138.0\n1       2   ALOHA69        69.0\n2       3  FLOWER69        69.0\n   BusNum     BusName\n0      22  WAIPAHU138\n   BusNum GenID  GenMW GenStatus\n0       2     1    2.5    Closed\n1249.9 MW of load\n1136.3 MW once restored\n",
+ "figures": 0
+}

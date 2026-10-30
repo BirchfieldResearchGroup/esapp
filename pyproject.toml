@@ -1,0 +1,130 @@
+[build-system]
+requires = ["hatchling>=1.27", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "esapp"
+dynamic = ["version"]
+description = "Python for PowerWorld"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+authors = [
+    { name = "Luke Lowery", email = "wyattluke.lowery@tamu.edu" },
+    { name = "Adam Birchfield", email = "abirchfield@tamu.edu" },
+]
+keywords = ["PowerWorld", "SimAuto", "power systems", "transient stability"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering",
+    "Typing :: Typed",
+]
+dependencies = [
+    "numpy>=2",
+    "pandas>=2.2",
+    "pywin32>=308; sys_platform == 'win32'",
+]
+
+[project.optional-dependencies]
+sparse = ["scipy>=1.14"]  # esapp.matrix: the Ybus, Jacobian and GIC G-matrix
+testing = ["pytest>=9"]  # esapp.testing: the pytest plugin and FakeSimAuto
+
+[project.urls]
+Homepage = "https://github.com/BirchfieldResearchGroup/esapp"
+Documentation = "https://esapp.readthedocs.io"
+Issues = "https://github.com/BirchfieldResearchGroup/esapp/issues"
+Changelog = "https://github.com/BirchfieldResearchGroup/esapp/blob/main/CHANGELOG.md"
+
+[dependency-groups]
+test = [
+    "pytest>=9",
+    "pytest-timeout>=2.3",
+    "pytest-randomly>=3.15",
+    "coverage>=7.6",
+    "scipy>=1.14",
+]
+lint = [
+    "ruff>=0.8",
+    "pyright[nodejs]>=1.1.390",
+    "pandas-stubs",
+    "types-pywin32",
+    "scipy>=1.14",
+    "scipy-stubs",
+    "matplotlib>=3.9",  # the docs' examples are checked like the package
+]
+docs = [  # what Read the Docs installs: Sphinx, and pytest since autodoc imports esapp.testing
+    "furo>=2025.12.19",
+    "myst-parser>=5",
+    "sphinx>=9,<10",
+    "sphinx-copybutton>=0.5.2",
+    "pytest>=9",
+]
+capture = ["matplotlib>=3.9", "scipy>=1.14"]  # docs/capture.py, run where PowerWorld is: RTD runs no example
+dev = [{ include-group = "test" }, { include-group = "lint" }]
+
+[tool.hatch.version]
+source = "vcs"
+fallback-version = "0.0.0"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/esapp"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "tools", "schema", "README.md", "CHANGELOG.md", "LICENSE"]
+
+# ---------------------------------------------------------------- pytest (9: native TOML)
+[tool.pytest]
+minversion = "9.0"
+strict = true
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = ["-ra"]
+filterwarnings = ["error"]
+timeout = "300"            # plugin ini values are strings
+timeout_method = "thread"  # Windows has no SIGALRM; also the only way out of a hung COM call
+
+# ---------------------------------------------------------------- coverage
+[tool.coverage.run]
+source_pkgs = ["esapp"]
+branch = true
+omit = ["*/esapp/grid/*", "*/esapp/ts/_catalog.py", "*/esapp/commands/_catalog.py"]
+
+[tool.coverage.report]
+fail_under = 90  # unit tests alone; the live suite takes it to 94
+show_missing = true
+skip_covered = true
+
+# ---------------------------------------------------------------- ruff
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["src", "tests", "tools", "docs"]
+extend-exclude = [  # generated: tools/codegen checks these
+    "src/esapp/grid",
+    "src/esapp/ts/_catalog.py",
+    "src/esapp/commands/_catalog.py",
+    "src/esapp/commands/__init__.pyi",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "PT", "PERF", "NPY", "RUF"]
+
+# ---------------------------------------------------------------- pyright
+[tool.pyright]
+pythonVersion = "3.12"
+include = ["src", "tools", "docs/examples"]
+exclude = ["src/esapp/grid", "src/esapp/ts/_catalog.py", "**/__pycache__"]
+venvPath = "."
+venv = ".venv"
+typeCheckingMode = "strict"
+# pandas/numpy stubs leave many members partially unknown; strict elsewhere.
+reportUnknownMemberType = false
+reportUnknownArgumentType = false
+reportUnknownVariableType = false

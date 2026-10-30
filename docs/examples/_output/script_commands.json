@@ -1,0 +1,5 @@
+{
+ "sha256": "c711cedf086ec90edcd1bb9e70967665b0a16018924808108574c62773e89d9d",
+ "stdout": "SolvePowerFlow(POLARNEWTON);\nCTGSolveAll(NO);\n89 contingencies solved\n   BusNum GenID  GenMW\n0       2     1   50.0\n1       2     2   50.0\n2       2     3   50.0\n3       2     4   50.0\n",
+ "figures": 0
+}

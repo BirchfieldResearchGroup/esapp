@@ -1,0 +1,5 @@
+{
+ "sha256": "a3af4dfcf42f067256a4672d113fa2589835114718d13ecafc0ff40ccbcb82b4",
+ "stdout": "BusNum  BusNum:1  LineCircuit\n1       5         1              0.438\n                  2              0.438\n5       9         1              0.052\nName: ptdf, dtype: float64\n75 lines and 2 radial; an outage moves up to 100%\n",
+ "figures": 1
+}
